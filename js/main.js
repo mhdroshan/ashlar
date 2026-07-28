@@ -73,28 +73,51 @@ function initHeaderScroll() {
 function initMobileMenu() {
   const toggleBtn = document.querySelector('.mobile-toggle');
   const drawer = document.querySelector('.mobile-drawer');
+  const closeBtn = document.querySelector('.mobile-drawer-close');
   const navLinks = document.querySelectorAll('.mobile-nav-links a');
 
-  if (!toggleBtn || !drawer) return;
+  if (!drawer) return;
 
-  toggleBtn.addEventListener('click', () => {
-    drawer.classList.toggle('open');
-    toggleBtn.classList.toggle('active');
-    const isExpanded = drawer.classList.contains('open');
-    toggleBtn.setAttribute('aria-expanded', isExpanded);
-    if (isExpanded) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
+  const openMenu = () => {
+    drawer.classList.add('open');
+    if (toggleBtn) {
+      toggleBtn.classList.add('active');
+      toggleBtn.setAttribute('aria-expanded', 'true');
     }
-  });
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeMenu = () => {
+    drawer.classList.remove('open');
+    if (toggleBtn) {
+      toggleBtn.classList.remove('active');
+      toggleBtn.setAttribute('aria-expanded', 'false');
+    }
+    document.body.style.overflow = '';
+  };
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+      if (drawer.classList.contains('open')) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeMenu);
+  }
 
   navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      drawer.classList.remove('open');
-      toggleBtn.classList.remove('active');
-      document.body.style.overflow = '';
-    });
+    link.addEventListener('click', closeMenu);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && drawer.classList.contains('open')) {
+      closeMenu();
+    }
   });
 }
 
@@ -397,6 +420,21 @@ function openQuoteModal(customMessage) {
   window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
 }
 
+// Official System Brochure download trigger
+function downloadBrochure() {
+  const fileUrl = 'aseets/vitco-v14-section.png';
+  const link = document.createElement('a');
+  link.href = fileUrl;
+  link.download = 'Ashlar-Architectural-Glass-System-Brochure.png';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+
+  setTimeout(() => {
+    openQuoteModal('Hello Ashlar, I have downloaded the System Brochure and would like to request full CAD sections and Revit BIM models for my project.');
+  }, 500);
+}
+
 function closeQuoteModal() {
   // Utility fallback
 }
@@ -464,4 +502,150 @@ function initLifestyleHotspots() {
     hotspots.forEach(s => s.classList.remove('active'));
   });
 }
+
+/* --------------------------------------------------
+   13. Engineering Bento Log Switcher
+   -------------------------------------------------- */
+const SYSTEM_LOGS = {
+  'v2.026': {
+    card1: {
+      tag: 'STRUCTURAL INTEGRITY',
+      val: '12kN/m²',
+      sub: '',
+      icon: 'fa-compass-drafting',
+      desc: 'Designed to withstand extreme vertical and horizontal stress. Our proprietary ion-exchange process strengthens the surface at a molecular level.'
+    },
+    card2: {
+      tag: 'VISUAL CLARITY',
+      val: '99.8%',
+      sub: 'ULTRA-LOW IRON CONTENT',
+      icon: 'fa-eye'
+    },
+    card3: {
+      icon: 'fa-ruler-combined',
+      label: 'MAX SIZE',
+      val: '4x12m'
+    },
+    card4: {
+      icon: 'fa-scale-balanced',
+      label: 'WEIGHT',
+      val: '25kg/m²'
+    }
+  },
+  'v2.028': {
+    card1: {
+      tag: 'SASH PERFORMANCE',
+      val: '130kg',
+      sub: 'MAX SASH WEIGHT',
+      icon: 'fa-weight-hanging',
+      desc: 'Equipped with Up-Down Lock variants for enhanced security and smooth operation. Designed for heavy-duty architectural applications.'
+    },
+    card2: {
+      tag: 'PROFILE PRECISION',
+      val: '14mm',
+      sub: 'SLIM INTERLOCK WIDTH',
+      icon: 'fa-border-all'
+    },
+    card3: {
+      icon: 'fa-arrows-up-down',
+      label: 'MAX DOOR HEIGHT',
+      val: '2133mm'
+    },
+    card4: {
+      icon: 'fa-layer-group',
+      label: 'GLASS THICKNESS',
+      val: '8-12mm'
+    }
+  }
+};
+
+function switchSystemLog(logId) {
+  const data = SYSTEM_LOGS[logId];
+  if (!data) return;
+
+  document.querySelectorAll('.eng-log-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.log === logId);
+  });
+
+  const card1Val = document.getElementById('eng-val-1');
+  const card1Tag = document.getElementById('eng-tag-1');
+  const card1Sub = document.getElementById('eng-sub-1');
+  const card1Icon = document.getElementById('eng-icon-1');
+  const card1Desc = document.getElementById('eng-desc-1');
+
+  const card2Val = document.getElementById('eng-val-2');
+  const card2Tag = document.getElementById('eng-tag-2');
+  const card2Sub = document.getElementById('eng-sub-2');
+  const card2Icon = document.getElementById('eng-icon-2');
+
+  const card3Val = document.getElementById('eng-val-3');
+  const card3Label = document.getElementById('eng-label-3');
+  const card3Icon = document.getElementById('eng-icon-3');
+
+  const card4Val = document.getElementById('eng-val-4');
+  const card4Label = document.getElementById('eng-label-4');
+  const card4Icon = document.getElementById('eng-icon-4');
+
+  const targets = [
+    card1Val, card1Tag, card1Sub, card1Icon, card1Desc,
+    card2Val, card2Tag, card2Sub, card2Icon,
+    card3Val, card3Label, card3Icon,
+    card4Val, card4Label, card4Icon
+  ].filter(Boolean);
+
+  if (typeof gsap !== 'undefined') {
+    gsap.to(targets, {
+      opacity: 0,
+      y: -6,
+      duration: 0.15,
+      onComplete: () => {
+        if (card1Tag) card1Tag.textContent = data.card1.tag;
+        if (card1Val) card1Val.innerHTML = data.card1.val;
+        if (card1Sub) card1Sub.textContent = data.card1.sub;
+        if (card1Icon) card1Icon.className = `fa-solid ${data.card1.icon}`;
+        if (card1Desc) card1Desc.textContent = data.card1.desc;
+
+        if (card2Tag) card2Tag.textContent = data.card2.tag;
+        if (card2Val) card2Val.innerHTML = data.card2.val;
+        if (card2Sub) card2Sub.textContent = data.card2.sub;
+        if (card2Icon) card2Icon.className = `fa-solid ${data.card2.icon}`;
+
+        if (card3Label) card3Label.textContent = data.card3.label;
+        if (card3Val) card3Val.textContent = data.card3.val;
+        if (card3Icon) card3Icon.className = `fa-solid ${data.card3.icon}`;
+
+        if (card4Label) card4Label.textContent = data.card4.label;
+        if (card4Val) card4Val.textContent = data.card4.val;
+        if (card4Icon) card4Icon.className = `fa-solid ${data.card4.icon}`;
+
+        gsap.to(targets, {
+          opacity: 1,
+          y: 0,
+          duration: 0.25,
+          stagger: 0.02
+        });
+      }
+    });
+  } else {
+    if (card1Tag) card1Tag.textContent = data.card1.tag;
+    if (card1Val) card1Val.innerHTML = data.card1.val;
+    if (card1Sub) card1Sub.textContent = data.card1.sub;
+    if (card1Icon) card1Icon.className = `fa-solid ${data.card1.icon}`;
+    if (card1Desc) card1Desc.textContent = data.card1.desc;
+
+    if (card2Tag) card2Tag.textContent = data.card2.tag;
+    if (card2Val) card2Val.innerHTML = data.card2.val;
+    if (card2Sub) card2Sub.textContent = data.card2.sub;
+    if (card2Icon) card2Icon.className = `fa-solid ${data.card2.icon}`;
+
+    if (card3Label) card3Label.textContent = data.card3.label;
+    if (card3Val) card3Val.textContent = data.card3.val;
+    if (card3Icon) card3Icon.className = `fa-solid ${data.card3.icon}`;
+
+    if (card4Label) card4Label.textContent = data.card4.label;
+    if (card4Val) card4Val.textContent = data.card4.val;
+    if (card4Icon) card4Icon.className = `fa-solid ${data.card4.icon}`;
+  }
+}
+
 

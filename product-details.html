@@ -20,7 +20,7 @@
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
+<body class="pdp-grid-bg">
 
   <!-- NAVIGATION HEADER -->
   <header class="header">
@@ -50,6 +50,15 @@
 
   <!-- MOBILE NAVIGATION DRAWER -->
   <div class="mobile-drawer" id="mobile-drawer">
+    <div class="mobile-drawer-header">
+      <a href="index.html" class="logo">
+        <span>ASHLAR</span>
+      </a>
+      <button class="mobile-drawer-close" aria-label="Close navigation menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
     <div class="mobile-nav-links">
       <a href="index.html" class="mobile-nav-item">
         <span class="num">01</span>
@@ -66,7 +75,7 @@
     </div>
 
     <div class="mobile-drawer-footer">
-      <button class="btn btn-primary" style="width: 100%; margin-bottom: 1.5rem;" onclick="openQuoteModal()">
+      <button class="btn btn-bw-minimal" style="width: 100%; margin-bottom: 1.5rem;" onclick="openQuoteModal()">
         Request Specification <i class="fa-solid fa-arrow-right"></i>
       </button>
 
@@ -78,7 +87,7 @@
   </div>
 
   <!-- MAIN PRODUCT SECTION -->
-  <main style="padding-top: 120px; background: var(--bg-main);">
+  <main style="padding-top: 120px;">
     <div class="container">
       
       <!-- BREADCRUMB TRAIL -->
@@ -134,115 +143,120 @@
         </div>
       </div>
 
-      <!-- SYSTEMS & ENGINEERING BENTO SECTION -->
-      <section class="bento-section reveal-up" id="featured" style="padding: 4rem 0 2rem 0;">
-        <div class="bento-header reveal-up">
-          <span class="section-tag">SYSTEM HIGHLIGHTS</span>
-          <h2 class="section-title">Architectural <strong>Systems & Engineering Bento</strong></h2>
-          <p class="section-desc">Explore our flagship Ashlar system windows, custom anodized finishes, sub-floor profile dynamics, and thermal efficiency ratings in a unified grid.</p>
-        </div>
-
-        <div class="bento-grid reveal-up">
-          <!-- Bento Card 1: Flagship Ashlar System Windows (Hero 8-Col) -->
-          <div class="bento-card bento-card-hero bento-col-8">
-            <div class="bento-media">
-              <img src="aseets/glass-frame-2.jpg" alt="Ashlar Architectural Glass System">
-              <div class="hotspot" style="top: 35%; left: 45%;">
-                <div class="hotspot-tooltip">14mm Slim Profile</div>
-              </div>
-              <div class="hotspot" style="top: 75%; left: 30%;">
-                <div class="hotspot-tooltip">Concealed Track</div>
-              </div>
+      <!-- SYSTEMS & ENGINEERING BENTO SECTION (ATTACHMENT REDESIGN) -->
+      <section class="eng-bento-section reveal-up" id="featured">
+        <div class="container">
+          <!-- Section Header with Log Switcher -->
+          <div class="eng-bento-header reveal-up">
+            <div class="eng-bento-title-wrap">
+              <span class="section-tag" style="margin-bottom: 0.35rem;">ENGINEERING HIGHLIGHTS</span>
+              <h2 class="eng-bento-section-title">ENGINEERING PRECISION</h2>
             </div>
-            <div class="bento-content">
-              <span class="bento-tag">FLAGSHIP MINIMAL SYSTEM</span>
-              <h3 class="bento-title">Ashlar System Windows</h3>
-              <p class="bento-desc">Ultra-slim 14mm interlocks paired with heavy-duty stainless steel runners, open-corner sliding configurations, and extreme weather insulation.</p>
-              <div class="bento-pills">
-                <span class="bento-pill"><i class="fa-solid fa-check" style="color: var(--accent-bronze);"></i> 14mm Sightline</span>
-                <span class="bento-pill"><i class="fa-solid fa-check" style="color: var(--accent-bronze);"></i> 2 & 3 Track Options</span>
-                <span class="bento-pill"><i class="fa-solid fa-check" style="color: var(--accent-bronze);"></i> Up-Down Locks</span>
-              </div>
-              <div>
-                <button class="btn btn-primary" onclick="openQuoteModal('Hello Ashlar, I would like to request a quote for Ashlar System Windows.')">Request System Quote <i class="fa-solid fa-arrow-right"></i></button>
-              </div>
+            
+            <div class="eng-log-switcher">
+              <button class="eng-log-btn active" data-log="v2.026" onclick="switchSystemLog('v2.026')">SYSTEM_LOG_v2.026</button>
+              <button class="eng-log-btn" data-log="v2.028" onclick="switchSystemLog('v2.028')">SYSTEM_LOG_v2.028</button>
             </div>
           </div>
 
-          <!-- Bento Card 2: Extrusion Profile Detail (Tall 4-Col Light) -->
-          <div class="bento-card bento-col-4">
-            <div style="height: 180px; border-radius: 18px; overflow: hidden; margin-bottom: 1.5rem; border: 1px solid var(--border-light);">
-              <img src="aseets/glass-frame-9.jpg" alt="14mm Slim Interlock Extrusion" style="width: 100%; height: 100%; object-fit: cover;">
+          <!-- Upper Bento Grid -->
+          <div class="eng-bento-grid reveal-up">
+            <!-- Card 1: Main Structural / Sash Performance (Tall) -->
+            <div class="eng-card eng-card-tall">
+              <div class="eng-circle-badge">
+                <i class="fa-solid fa-compass-drafting" id="eng-icon-1"></i>
+              </div>
+              <div>
+                <span class="eng-card-tag" id="eng-tag-1">STRUCTURAL INTEGRITY</span>
+                <div class="eng-hero-val" id="eng-val-1">12kN/m²</div>
+                <div class="eng-hero-val-sub" id="eng-sub-1"></div>
+              </div>
+              <div class="eng-card-desc-wrap">
+                <p class="eng-card-desc" id="eng-desc-1">
+                  Designed to withstand extreme vertical and horizontal stress. Our proprietary ion-exchange process strengthens the surface at a molecular level.
+                </p>
+              </div>
             </div>
-            <div>
-              <span class="bento-tag">PROFILE DYNAMICS</span>
-              <h3 class="bento-title" style="font-size: 1.4rem;">14mm Slim Vertical Interlock</h3>
-              <p class="bento-desc" style="font-size: 0.875rem;">High-tensile anodized aluminum profiles engineered for maximum glass-to-frame ratio and structural rigidity.</p>
+
+            <!-- Card 2: Visual Clarity / Profile Precision (Wide) -->
+            <div class="eng-card eng-card-wide">
+              <div class="eng-circle-badge">
+                <i class="fa-solid fa-eye" id="eng-icon-2"></i>
+              </div>
+              <div>
+                <span class="eng-card-tag" id="eng-tag-2">VISUAL CLARITY</span>
+                <div class="eng-hero-val" id="eng-val-2">99.8%</div>
+                <div class="eng-hero-val-sub" id="eng-sub-2">ULTRA-LOW IRON CONTENT</div>
+              </div>
             </div>
-            <div class="bento-pills" style="margin-bottom: 0;">
-              <span class="bento-pill">ISO 9001 Tested</span>
-              <span class="bento-pill">Dual Weather Seals</span>
+
+            <!-- Card 3: Max Size / Max Door Height (Square) -->
+            <div class="eng-card eng-card-square">
+              <div class="eng-square-icon-wrap">
+                <i class="fa-solid fa-ruler-combined" id="eng-icon-3"></i>
+              </div>
+              <span class="eng-card-tag" id="eng-label-3">MAX SIZE</span>
+              <div class="eng-square-val" id="eng-val-3">4x12m</div>
+            </div>
+
+            <!-- Card 4: Weight / Glass Thickness (Square) -->
+            <div class="eng-card eng-card-square">
+              <div class="eng-square-icon-wrap">
+                <i class="fa-solid fa-scale-balanced" id="eng-icon-4"></i>
+              </div>
+              <span class="eng-card-tag" id="eng-label-4">WEIGHT</span>
+              <div class="eng-square-val" id="eng-val-4">25kg/m²</div>
             </div>
           </div>
 
-          <!-- Bento Card 3: Anodized Surface Finishes Showcase (Wide 8-Col) -->
-          <div class="bento-card bento-finish-card bento-col-8">
-            <div style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2rem; align-items: center; width: 100%;">
+          <!-- Lower Bento Card: Certified Architectural Standards (Attachment Image 2) -->
+          <div class="eng-card eng-standards-card reveal-up">
+            <!-- Left Side Preview / Context -->
+            <div style="position: relative; border-radius: 12px; overflow: hidden; height: 100%; min-height: 220px; background: #f8fafc; border: 1px solid #e2e8f0; display: flex; flex-direction: column; justify-content: space-between; padding: 1.75rem;">
               <div>
-                <span class="bento-tag">SURFACE MATERIALITY</span>
-                <h3 class="bento-title">Anodized Surface Finishes</h3>
-                <p class="bento-desc">Engineered to resist extreme UV exposure and coastal corrosion with zero maintenance requirements.</p>
-                
-                <div class="bento-pills" style="margin-bottom: 0;">
-                  <span class="bento-pill"><i class="fa-solid fa-layer-group" style="color: var(--accent-bronze);"></i> Soft Silver Anodized</span>
-                  <span class="bento-pill"><i class="fa-solid fa-layer-group" style="color: var(--accent-bronze);"></i> Anodic Black Matte</span>
-                  <span class="bento-pill"><i class="fa-solid fa-layer-group" style="color: var(--accent-bronze);"></i> Warm Bronze</span>
-                  <span class="bento-pill"><i class="fa-solid fa-layer-group" style="color: var(--accent-bronze);"></i> Champagne Satin</span>
+                <span class="eng-card-tag">SYSTEM PROFILE DETAIL</span>
+                <h4 style="font-size: 1.2rem; font-weight: 700; color: #0f172a; margin-top: 0.25rem;">V-14 Minimal Extrusion</h4>
+                <p style="font-size: 0.85rem; color: #64748b; margin-top: 0.5rem;">Precision-engineered structural aluminum with integrated thermal break chambers and concealed drainage channels.</p>
+              </div>
+              <div style="display: flex; gap: 0.75rem; align-items: center; margin-top: 1.5rem; flex-wrap: wrap;">
+                <span style="font-family: monospace; font-size: 0.75rem; font-weight: 700; background: #ffffff; border: 1px solid #cbd5e1; padding: 0.3rem 0.65rem; border-radius: 4px; color: #334155;">ISO 9001 TESTED</span>
+                <span style="font-family: monospace; font-size: 0.75rem; font-weight: 700; background: #ffffff; border: 1px solid #cbd5e1; padding: 0.3rem 0.65rem; border-radius: 4px; color: #334155;">CE CERTIFIED</span>
+              </div>
+            </div>
+
+            <!-- Right Side Standards & Performance Features -->
+            <div class="eng-standards-content">
+              <span class="eng-card-tag">PERFORMANCE ENGINEERING</span>
+              <h3 class="eng-standards-title">CERTIFIED ARCHITECTURAL STANDARDS</h3>
+              <p class="eng-standards-desc">
+                The V-14 system is rigorously tested to meet the most demanding environmental conditions, ensuring longevity and comfort.
+              </p>
+
+              <div class="eng-features-grid">
+                <div class="eng-feature-pill">
+                  <i class="fa-solid fa-volume-xmark"></i>
+                  <span>SOUND INSULATION</span>
+                </div>
+                <div class="eng-feature-pill">
+                  <i class="fa-solid fa-wind"></i>
+                  <span>WIND LOAD</span>
+                </div>
+                <div class="eng-feature-pill">
+                  <i class="fa-solid fa-fan"></i>
+                  <span>AIR PERMEABILITY</span>
+                </div>
+                <div class="eng-feature-pill">
+                  <i class="fa-solid fa-droplet"></i>
+                  <span>WATER TIGHTNESS</span>
                 </div>
               </div>
 
-              <div style="height: 220px; border-radius: 20px; overflow: hidden; border: 1px solid var(--border-light);">
-                <img src="aseets/glass-frame-2.jpg" alt="Surface Finish Quality Detail" style="width: 100%; height: 100%; object-fit: cover;">
-              </div>
-            </div>
-          </div>
-
-          <!-- Bento Card 4: Acoustic & Wind Load Resistance (Stat 4-Col) -->
-          <div class="bento-card bento-stat-card bento-col-4">
-            <div class="bento-stat-icon"><i class="fa-solid fa-wind"></i></div>
-            <div>
-              <div class="bento-stat-val">220 km/h</div>
-              <div class="bento-stat-label">Storm Wind Pressure Rating (3,000 Pa)</div>
-            </div>
-            <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 1rem; border-top: 1px solid var(--border-light); padding-top: 0.75rem;">
-              Certified under EN 12210 Class C5/B5 standards for hurricane-force coastal weather.
-            </p>
-          </div>
-
-          <!-- Bento Card 5: Thermal Insulation U-Value (Stat 4-Col Light) -->
-          <div class="bento-card bento-stat-card bento-col-4">
-            <div class="bento-stat-icon"><i class="fa-solid fa-temperature-arrow-down"></i></div>
-            <div>
-              <div class="bento-stat-val" style="color: var(--accent-bronze);">0.8 U</div>
-              <div class="bento-stat-label">Ultra-Low U-Value (W/m²K)</div>
-            </div>
-            <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-top: 1rem; border-top: 1px solid var(--border-light); padding-top: 0.75rem;">
-              Triple-glazed argon insulation chambers for extreme sub-zero or desert climate control.
-            </p>
-          </div>
-
-          <!-- Bento Card 6: Download System Brochure Tile (Stat 8-Col Light) -->
-          <div class="bento-card bento-col-8" style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border: 1px solid var(--border-light); color: var(--text-primary);">
-            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
-              <div>
-                <span class="bento-tag" style="color: var(--accent-bronze);">SYSTEM BROCHURE & CATALOG</span>
-                <h3 class="bento-title" style="color: var(--text-primary); margin-bottom: 0.5rem;">Download System Brochure</h3>
-                <p style="font-size: 0.9rem; color: var(--text-secondary); max-width: 480px;">Access our complete product catalog, architectural system window specifications, finish options, and technical detail drawings.</p>
-              </div>
-              <div>
-                <button class="btn btn-primary" onclick="openQuoteModal('Hello Ashlar, please send me the official Product System Brochure & Catalog.')">
-                  Download Brochure <i class="fa-solid fa-file-pdf"></i>
-                </button>
+              <div class="eng-track-options">
+                <div class="eng-track-label">Track Options</div>
+                <div class="eng-track-badges">
+                  <span class="eng-track-badge">2 TRACK</span>
+                  <span class="eng-track-badge">3 TRACK</span>
+                </div>
               </div>
             </div>
           </div>
@@ -254,7 +268,7 @@
   </main>
 
   <!-- TECHNICAL SPECIFICATIONS & CERTIFIED PERFORMANCE SECTION -->
-  <section class="section-padding" style="background: var(--bg-main); padding-top: 0;">
+  <section class="section-padding" style="padding-top: 0;">
     <div class="container">
       <div class="specs-advantages-grid reveal-up">
         <!-- Left: Technical Specifications Table -->
@@ -366,7 +380,7 @@
 
 
   <!-- MACRO ENGINEERING DETAILS SECTION -->
-  <section class="section-padding" style="background: var(--bg-main); border-top: 1px solid rgba(15,23,42,0.06);">
+  <section class="section-padding" style="border-top: 1px solid rgba(15,23,42,0.06);">
     <div class="container">
       <div style="margin-bottom: 3.5rem; text-align: center;" class="reveal-up">
         <span class="section-tag">ENGINEERING DISCOVERY</span>
@@ -433,6 +447,28 @@
   </section>
 
 
+
+  <!-- READY FOR SPECIFICATION SECTION -->
+  <section class="spec-cta-section reveal-up">
+    <div class="spec-cta-container">
+      <div class="spec-cta-pill">AVAILABILITY: WORLDWIDE SHIPPING</div>
+      <h2 class="spec-cta-title">
+        READY FOR<br>
+        SPECIFICATION
+      </h2>
+      <p class="spec-cta-desc">
+        Contact our architectural engineering team for custom sizing and load calculations.
+      </p>
+      <div class="spec-cta-actions">
+        <button class="btn-spec-primary" onclick="openQuoteModal('Hello Ashlar, I would like to request a specification quote for custom sizing and load calculations.')">
+          REQUEST QUOTE
+        </button>
+        <button class="btn-spec-outline" onclick="downloadBrochure()">
+          DOWNLOAD BROCHURE
+        </button>
+      </div>
+    </div>
+  </section>
 
   <!-- MINIMALIST LIGHT FOOTER -->
   <footer class="site-footer-minimal">

@@ -50,6 +50,15 @@
 
   <!-- MOBILE NAVIGATION DRAWER -->
   <div class="mobile-drawer" id="mobile-drawer">
+    <div class="mobile-drawer-header">
+      <a href="index.html" class="logo">
+        <span>ASHLAR</span>
+      </a>
+      <button class="mobile-drawer-close" aria-label="Close navigation menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
     <div class="mobile-nav-links">
       <a href="index.html" class="mobile-nav-item">
         <span class="num">01</span>
@@ -66,7 +75,7 @@
     </div>
 
     <div class="mobile-drawer-footer">
-      <button class="btn btn-primary" style="width: 100%; margin-bottom: 1.5rem;" onclick="openQuoteModal()">
+      <button class="btn btn-bw-minimal" style="width: 100%; margin-bottom: 1.5rem;" onclick="openQuoteModal()">
         Request Specification <i class="fa-solid fa-arrow-right"></i>
       </button>
 
@@ -309,6 +318,28 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- READY FOR SPECIFICATION SECTION -->
+  <section class="spec-cta-section reveal-up">
+    <div class="spec-cta-container">
+      <div class="spec-cta-pill">AVAILABILITY: WORLDWIDE SHIPPING</div>
+      <h2 class="spec-cta-title">
+        READY FOR<br>
+        SPECIFICATION
+      </h2>
+      <p class="spec-cta-desc">
+        Contact our architectural engineering team for custom sizing and load calculations.
+      </p>
+      <div class="spec-cta-actions">
+        <button class="btn-spec-primary" onclick="openQuoteModal('Hello Ashlar, I would like to request a specification quote for custom sizing and load calculations.')">
+          REQUEST QUOTE
+        </button>
+        <button class="btn-spec-outline" onclick="downloadBrochure()">
+          DOWNLOAD BROCHURE
+        </button>
       </div>
     </div>
   </section>
