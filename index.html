@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ashlar — Modern Architectural Glass Systems & Floor-to-Ceiling Panels</title>
+  <meta name="description" content="Ashlar manufactures premium architectural glass systems with ultra-slim aluminum frames for luxury villas, commercial headquarters, and modern buildings.">
+  
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Lenis & GSAP Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- NAVIGATION HEADER -->
+  <header class="header">
+    <div class="container container-wide">
+      <div class="header-inner">
+        <a href="index.html" class="logo">
+          <span>ASHLAR</span>
+        </a>
+
+        <nav class="nav-menu">
+          <a href="index.html" class="nav-link active">Home</a>
+          <a href="product-details.html" class="nav-link">Products</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+          <button class="btn-header-clean" onclick="openQuoteModal()">Request Quote</button>
+          <button class="mobile-toggle" aria-label="Toggle navigation menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE NAVIGATION DRAWER -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <div class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-item">
+        <span class="num">01</span>
+        <span class="label">Home</span>
+      </a>
+      <a href="product-details.html" class="mobile-nav-item">
+        <span class="num">02</span>
+        <span class="label">Products & Systems</span>
+      </a>
+      <a href="contact.html" class="mobile-nav-item">
+        <span class="num">03</span>
+        <span class="label">Contact Us</span>
+      </a>
+    </div>
+
+    <div class="mobile-drawer-footer">
+      <button class="btn btn-primary" style="width: 100%; margin-bottom: 1.5rem;" onclick="openQuoteModal()">
+        Request Specification <i class="fa-solid fa-arrow-right"></i>
+      </button>
+
+      <div class="mobile-drawer-contact">
+        <div><i class="fa-solid fa-phone"></i> +91 98956 52725</div>
+        <div><i class="fa-solid fa-envelope"></i> info@ashlar.com</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 1: 50/50 SPLIT HERO REDESIGN (MATCHING REFERENCE DESIGN) -->
+  <section class="hero-split-redesign">
+    <!-- Left Column: Architectural Glass Background Video with Overlay Card -->
+    <div class="hero-split-media reveal-up">
+      <video class="hero-split-video" autoplay loop muted playsinline poster="aseets/glass-prismatic-refraction.png">
+        <source src="aseets/hero-video.mp4" type="video/mp4">
+      </video>
+      
+      <div class="hero-split-insight-card">
+        <span class="hero-split-insight-tag">TECHNICAL INSIGHT 01</span>
+        <h3 class="hero-split-insight-title">Prismatic Refraction Engineering</h3>
+      </div>
+    </div>
+
+    <!-- Right Column: Clean Editorial Content -->
+    <div class="hero-split-content reveal-up">
+      <span class="hero-split-tag">THE ART OF TRANSPARENCY</span>
+      <h1 class="hero-split-title">
+        Invisible<br>
+        Engineering
+      </h1>
+      <p class="hero-split-subtitle">
+        Crafting the world's most sophisticated architectural glass. Our processes are measured in microns, but our impact is measured in miles.
+      </p>
+      
+      <div class="hero-split-actions">
+        <a href="product-details.html" class="btn btn-primary" style="padding: 0.95rem 2.25rem;">
+          Explore Systems <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        <button class="btn btn-secondary" onclick="openQuoteModal('Hello Ashlar, I would like to request an architectural consultation.')" style="padding: 0.95rem 2.25rem;">
+          Request Consultation
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- MINIMALIST STATS STRIP SECTION -->
+  <section class="minimal-stats-strip reveal-up">
+    <div class="container">
+      <div class="minimal-stats-grid">
+        <div class="minimal-stat-item">
+          <div class="minimal-stat-num stat-number" data-count="14" data-suffix="mm">0mm</div>
+          <div class="minimal-stat-label">Slim Sightline</div>
+        </div>
+
+        <div class="minimal-stat-item">
+          <div class="minimal-stat-num stat-number accent" data-count="0.8" data-decimals="1" data-suffix=" U">0 U</div>
+          <div class="minimal-stat-label">Thermal Rating</div>
+        </div>
+
+        <div class="minimal-stat-item">
+          <div class="minimal-stat-num stat-number" data-count="220" data-suffix=" km/h">0 km/h</div>
+          <div class="minimal-stat-label">Wind Resistance</div>
+        </div>
+
+        <div class="minimal-stat-item">
+          <div class="minimal-stat-num stat-number" data-count="38" data-suffix=" dB">0 dB</div>
+          <div class="minimal-stat-label">Acoustic Barrier</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MONOLITHIC TRANSPARENCY & INTEGRATION SECTION -->
+  <section class="integration-section" id="integration">
+    <div class="container">
+      <div class="integration-grid reveal-up">
+        <!-- Left Side: Architectural Facade Image with Glassmorphic Card -->
+        <div class="integration-media-wrapper">
+          <div class="integration-img-box">
+            <img src="aseets/glass-frame-7.png" alt="Monolithic Architectural Glass Facade">
+          </div>
+
+          <div class="integration-glass-card">
+            <h3 class="integration-card-title">
+              Monolithic<br>
+              Transparency.
+            </h3>
+            <p class="integration-card-desc">
+              Breaking the barrier between interior sanctuary and the raw exterior world.
+            </p>
+            <a href="product-details.html" class="integration-card-link">
+              EXPLORE TECHNICAL SPECS <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Side: Clean Quote & Narrative -->
+        <div class="integration-content">
+          <span class="integration-tag">01 / INTEGRATION</span>
+          
+          <blockquote class="integration-quote">
+            "The most sophisticated glass is that which vanishes. We design for the moment when the architect's vision meets the unobstructed light."
+          </blockquote>
+
+          <div class="integration-divider"></div>
+
+          <p class="integration-narrative">
+            Our proprietary manufacturing process removes the standard green tint common in heavy glass, ensuring true-color transmission for interior spaces.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ARCHITECTURAL USE CASES & TYPOLOGIES SECTION -->
+  <section class="section-padding" style="background: #f8fafc; border-top: 1px solid rgba(15,23,42,0.06);" id="use-cases">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 3.5rem;" class="reveal-up">
+        <span class="section-tag">APPLICATIONS SHOWCASE</span>
+        <h2 class="section-title">Architectural <strong>Use Cases & Typologies</strong></h2>
+        <p class="section-desc" style="margin: 0 auto; max-width: 580px;">Tailored engineering configurations for luxury villas, commercial facades, and glass roofs.</p>
+      </div>
+
+      <div class="endless-app-grid reveal-up">
+        <!-- Card 1: RESIDENTIAL -->
+        <div class="endless-app-card" onclick="openQuoteModal('Hello Ashlar, I would like to inquire about Residential Villa applications.')">
+          <img src="aseets/glass-frame-6.png" alt="Residential Glass Wall Architecture">
+          <div class="app-glass-pill">
+            <span class="pill-text">RESIDENTIAL VILLAS</span>
+            <span class="pill-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+
+        <!-- Card 2: COMMERCIAL -->
+        <div class="endless-app-card featured-card" onclick="openQuoteModal('Hello Ashlar, I would like to inquire about Commercial Facade systems.')">
+          <img src="aseets/glass-frame-7.png" alt="Commercial Office Facade Systems">
+          <div class="app-glass-pill">
+            <span class="pill-text">COMMERCIAL FACADES</span>
+            <span class="pill-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+
+        <!-- Card 3: SKYLIGHTS -->
+        <div class="endless-app-card" onclick="openQuoteModal('Hello Ashlar, I would like to inquire about Architectural Skylights.')">
+          <img src="aseets/glass-frame-8.png" alt="Architectural Skylights & Roof Glass">
+          <div class="app-glass-pill">
+            <span class="pill-text">ARCHITECTURAL SKYLIGHTS</span>
+            <span class="pill-arrow"><i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: FULL-WIDTH LIFESTYLE PHOTOGRAPHY (MINIMALIST HERO TEXT) -->
+  <section class="fullwidth-lifestyle" id="lifestyle">
+    <div class="fullwidth-media-wrapper">
+      <img src="aseets/glass-frame-6.png" alt="Full-Width Architectural Glass Villa Lifestyle">
+    </div>
+    
+    <div class="fullwidth-overlay" style="background: linear-gradient(180deg, rgba(15, 23, 42, 0.35) 0%, rgba(15, 23, 42, 0.55) 100%);"></div>
+
+    <div class="fullwidth-minimal-hero reveal-up" style="position: relative; z-index: 3; text-align: center; max-width: 920px; padding: 0 1.5rem; margin: 0 auto; color: #ffffff;">
+      <span class="fullwidth-editorial-tag" style="color: #dfc298; letter-spacing: 0.25em; margin-bottom: 1.25rem; display: inline-block;">ARCHITECTURAL VISION</span>
+      <h2 style="font-family: var(--font-display, 'Syne', sans-serif); font-size: clamp(2.4rem, 5vw, 4.2rem); font-weight: 400; line-height: 1.15; color: #ffffff; letter-spacing: -0.02em; text-shadow: 0 4px 30px rgba(0,0,0,0.35);">
+        Where Swiss Engineering Meets <span style="font-weight: 700; color: #ffffff;">Unbounded Light.</span>
+      </h2>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section class="section-padding" style="background: var(--bg-main); padding-top: 5rem; padding-bottom: 6rem;" id="faq">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 3.5rem;" class="reveal-up">
+        <span class="section-tag">FREQUENTLY ASKED QUESTIONS</span>
+        <h2 class="section-title">Common <strong>Questions & Answers</strong></h2>
+        <p class="section-desc" style="margin: 0 auto; max-width: 600px;">Everything you need to know about Ashlar system windows, installation specifications, custom anodized finishes, and weather performance ratings.</p>
+      </div>
+
+      <div class="faq-container reveal-up">
+        <div class="accordion-item active">
+          <button class="accordion-header">
+            <span>What makes Ashlar system windows different from standard minimal sliding windows?</span>
+            <div class="accordion-icon"><i class="fa-solid fa-plus"></i></div>
+          </button>
+          <div class="accordion-body" style="max-height: 250px;">
+            <div class="accordion-content">
+              Ashlar system windows feature an industry-leading 14mm ultra-slim vertical interlock profile, concealed heavy-duty stainless steel sub-floor tracks, and custom multi-chamber thermal breaks. They deliver panoramic glass-to-frame ratios without compromising on structural wind load (certified up to 220 km/h) or acoustic sound insulation (38 dB rating).
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>What custom finishes and colors are available for the profiles?</span>
+            <div class="accordion-icon"><i class="fa-solid fa-plus"></i></div>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-content">
+              Our profile dynamics are available in premium anodized and powder-coated finishes, including Soft Silver Anodized, Anodic Black Matte, Warm Bronze, and Champagne Satin. All surface finishes undergo rigorous Qualanod and Qualicoat testing for maximum UV resistance and coastal anti-corrosion durability.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>How are Ashlar system windows integrated into sub-floor structures?</span>
+            <div class="accordion-icon"><i class="fa-solid fa-plus"></i></div>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-content">
+              Ashlar tracks are embedded flush into concrete floor slabs, creating a zero-threshold transition between indoor spaces and outdoor patios. Integrated sub-floor drainage channels quietly route heavy rainfall away from the living area to guarantee complete water-tightness during severe storms.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>Can Ashlar system windows be customized with motorization or smart integration?</span>
+            <div class="accordion-icon"><i class="fa-solid fa-plus"></i></div>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-content">
+              Yes. Panels up to 2,133mm height and 130 kg sash weights can be specified with concealed automated drives. These can be integrated into standard home automation platforms (KNX, Crestron, Lutron) or operated via remote keypads and smartphone interfaces.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            <span>How can architects and clients request the product system brochure?</span>
+            <div class="accordion-icon"><i class="fa-solid fa-plus"></i></div>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-content">
+              Architects, contractors, and clients can instantly request our complete Product System Brochure & Catalog by clicking the "Request Quote" button in the header or using any brochure download tile across our website.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MINIMALIST LIGHT FOOTER -->
+  <footer class="site-footer-minimal">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div class="footer-brand-col">
+          <div class="footer-brand-title">ASHLAR</div>
+          <p class="footer-brand-desc">
+            Pioneering structural clarity and advanced architectural glass solutions for the built environment.
+          </p>
+        </div>
+
+        <div class="footer-nav-col">
+          <a href="product-details.html">Product Systems</a>
+          <a href="contact.html">Contact Us</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <div>© 2026 Ashlar Architectural Glass. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX MODAL -->
+  <div class="modal" id="lightbox-modal">
+    <button class="modal-close"><i class="fa-solid fa-xmark"></i></button>
+    <div class="lightbox-img-container">
+      <img id="lightbox-img" src="" alt="Architectural Glass Full Screen Preview">
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+</body>
+</html>

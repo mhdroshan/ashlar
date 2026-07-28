@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ashlar System Windows — Technical Product Specifications & Configurator</title>
+  <meta name="description" content="Detailed technical specifications, dimensions, aluminum finishes, single & laminated glass options, and performance data for Ashlar system windows.">
+  
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Lenis & GSAP Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- NAVIGATION HEADER -->
+  <header class="header">
+    <div class="container container-wide">
+      <div class="header-inner">
+        <a href="index.html" class="logo">
+          <span>ASHLAR</span>
+        </a>
+
+        <nav class="nav-menu">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="product-details.html" class="nav-link active">Products</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+          <button class="btn-header-clean" onclick="openQuoteModal()">Request Quote</button>
+          <button class="mobile-toggle" aria-label="Toggle navigation menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE NAVIGATION DRAWER -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <div class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-item">
+        <span class="num">01</span>
+        <span class="label">Home</span>
+      </a>
+      <a href="product-details.html" class="mobile-nav-item">
+        <span class="num">02</span>
+        <span class="label">Products & Systems</span>
+      </a>
+      <a href="contact.html" class="mobile-nav-item">
+        <span class="num">03</span>
+        <span class="label">Contact Us</span>
+      </a>
+    </div>
+
+    <div class="mobile-drawer-footer">
+      <button class="btn btn-primary" style="width: 100%; margin-bottom: 1.5rem;" onclick="openQuoteModal()">
+        Request Specification <i class="fa-solid fa-arrow-right"></i>
+      </button>
+
+      <div class="mobile-drawer-contact">
+        <div><i class="fa-solid fa-phone"></i> +91 98956 52725</div>
+        <div><i class="fa-solid fa-envelope"></i> info@ashlar.com</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN PRODUCT SECTION -->
+  <main style="padding-top: 120px; background: var(--bg-main);">
+    <div class="container">
+      
+      <!-- BREADCRUMB TRAIL -->
+      <div class="breadcrumb-trail reveal-up">
+        <a href="index.html">PRODUCTS</a>
+        <span class="sep">></span>
+        <a href="#">SLIDING WINDOWS & DOORS</a>
+        <span class="sep">></span>
+        <span class="active">ASHLAR SYSTEM WINDOWS</span>
+      </div>
+
+      <!-- TITLE & SUBTITLE -->
+      <div style="margin-bottom: 2.5rem;" class="reveal-up">
+        <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(15,23,42,0.05); padding: 0.35rem 0.9rem; border-radius: var(--radius-pill); font-size: 0.725rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 0.85rem;">
+          SYSTEM MODEL: ASHLAR SYSTEM WINDOWS
+        </div>
+        <h1 class="section-title" style="font-size: clamp(2.5rem, 5vw, 3.8rem); font-weight: 500; margin-bottom: 1rem; color: var(--text-primary);">Ashlar System Windows</h1>
+        <p class="section-desc" style="max-width: 720px; font-size: 1.05rem; color: var(--text-secondary); line-height: 1.65;">
+          Minimalist sliding window and door system engineered with an ultra-slim 14mm vertical interlock profile, 2 & 3 track typologies, Up-Down lock variants, and certified weather resistance.
+        </p>
+      </div>
+
+      <!-- ASYMMETRIC GALLERY GRID (70 / 30 SPLIT WITH 3D SECTION RENDER) -->
+      <div class="gallery-asymmetric reveal-up">
+        <!-- Main Feature Image -->
+        <div class="gallery-main-container">
+          <img src="aseets/glass-frame-6.png" alt="Ashlar System Windows Installed Villa View" id="main-gallery-img">
+          <button class="gallery-expand-floating trigger-lightbox" data-img="aseets/glass-frame-6.png">
+            <i class="fa-solid fa-expand"></i> Expand Image
+          </button>
+        </div>
+
+        <!-- Vertical Thumbnail Column -->
+        <div class="gallery-thumb-col">
+          <div class="gallery-thumb-card active" data-fullsrc="aseets/glass-frame-6.png" title="Installed Architectural Villa View">
+            <img src="aseets/glass-frame-6.png" alt="Ashlar System Windows Installed Villa View">
+          </div>
+          <div class="gallery-thumb-card" data-fullsrc="aseets/glass-frame-9.jpg" title="14mm Interlock Profile Edge">
+            <img src="aseets/glass-frame-9.jpg" alt="Sliding Glass Door Interlock Edge Detail">
+          </div>
+          <div class="gallery-thumb-card" data-fullsrc="aseets/glass-frame-10.jpg" title="Flush Sub-Floor Concrete Track">
+            <img src="aseets/glass-frame-10.jpg" alt="Concealed Sub-Floor Concrete Track Integration">
+          </div>
+          <div class="gallery-thumb-card" data-fullsrc="aseets/glass-frame-11.jpg" title="Glazing Frame Channel & Gasket">
+            <img src="aseets/glass-frame-11.jpg" alt="Window Frame Edge & Acoustic Gasket Detail">
+          </div>
+          <div class="gallery-thumb-card" data-fullsrc="aseets/glass-frame-12.jpg" title="Mitred Glass Corner Joint">
+            <img src="aseets/glass-frame-12.jpg" alt="Mitred Structural Glass Corner Joint">
+          </div>
+          <div class="gallery-thumb-card" data-fullsrc="aseets/glass-frame-7.png" title="Interlock Alignment Detail">
+            <img src="aseets/glass-frame-7.png" alt="Ashlar System Windows Profile Interlock Detail">
+          </div>
+        </div>
+      </div>
+
+      <!-- SYSTEMS & ENGINEERING BENTO SECTION -->
+      <section class="bento-section reveal-up" id="featured" style="padding: 4rem 0 2rem 0;">
+        <div class="bento-header reveal-up">
+          <span class="section-tag">SYSTEM HIGHLIGHTS</span>
+          <h2 class="section-title">Architectural <strong>Systems & Engineering Bento</strong></h2>
+          <p class="section-desc">Explore our flagship Ashlar system windows, custom anodized finishes, sub-floor profile dynamics, and thermal efficiency ratings in a unified grid.</p>
+        </div>
+
+        <div class="bento-grid reveal-up">
+          <!-- Bento Card 1: Flagship Ashlar System Windows (Hero 8-Col) -->
+          <div class="bento-card bento-card-hero bento-col-8">
+            <div class="bento-media">
+              <img src="aseets/glass-frame-2.jpg" alt="Ashlar Architectural Glass System">
+              <div class="hotspot" style="top: 35%; left: 45%;">
+                <div class="hotspot-tooltip">14mm Slim Profile</div>
+              </div>
+              <div class="hotspot" style="top: 75%; left: 30%;">
+                <div class="hotspot-tooltip">Concealed Track</div>
+              </div>
+            </div>
+            <div class="bento-content">
+              <span class="bento-tag">FLAGSHIP MINIMAL SYSTEM</span>
+              <h3 class="bento-title">Ashlar System Windows</h3>
+              <p class="bento-desc">Ultra-slim 14mm interlocks paired with heavy-duty stainless steel runners, open-corner sliding configurations, and extreme weather insulation.</p>
+              <div class="bento-pills">
+                <span class="bento-pill"><i class="fa-solid fa-check" style="color: var(--accent-bronze);"></i> 14mm Sightline</span>
+                <span class="bento-pill"><i class="fa-solid fa-check" style="color: var(--accent-bronze);"></i> 2 & 3 Track Options</span>
+                <span class="bento-pill"><i class="fa-solid fa-check" style="color: var(--accent-bronze);"></i> Up-Down Locks</span>
+              </div>
+              <div>
+                <button class="btn btn-primary" onclick="openQuoteModal('Hello Ashlar, I would like to request a quote for Ashlar System Windows.')">Request System Quote <i class="fa-solid fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bento Card 2: Extrusion Profile Detail (Tall 4-Col Light) -->
+          <div class="bento-card bento-col-4">
+            <div style="height: 180px; border-radius: 18px; overflow: hidden; margin-bottom: 1.5rem; border: 1px solid var(--border-light);">
+              <img src="aseets/glass-frame-9.jpg" alt="14mm Slim Interlock Extrusion" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div>
+              <span class="bento-tag">PROFILE DYNAMICS</span>
+              <h3 class="bento-title" style="font-size: 1.4rem;">14mm Slim Vertical Interlock</h3>
+              <p class="bento-desc" style="font-size: 0.875rem;">High-tensile anodized aluminum profiles engineered for maximum glass-to-frame ratio and structural rigidity.</p>
+            </div>
+            <div class="bento-pills" style="margin-bottom: 0;">
+              <span class="bento-pill">ISO 9001 Tested</span>
+              <span class="bento-pill">Dual Weather Seals</span>
+            </div>
+          </div>
+
+          <!-- Bento Card 3: Anodized Surface Finishes Showcase (Wide 8-Col) -->
+          <div class="bento-card bento-finish-card bento-col-8">
+            <div style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2rem; align-items: center; width: 100%;">
+              <div>
+                <span class="bento-tag">SURFACE MATERIALITY</span>
+                <h3 class="bento-title">Anodized Surface Finishes</h3>
+                <p class="bento-desc">Engineered to resist extreme UV exposure and coastal corrosion with zero maintenance requirements.</p>
+                
+                <div class="bento-pills" style="margin-bottom: 0;">
+                  <span class="bento-pill"><i class="fa-solid fa-layer-group" style="color: var(--accent-bronze);"></i> Soft Silver Anodized</span>
+                  <span class="bento-pill"><i class="fa-solid fa-layer-group" style="color: var(--accent-bronze);"></i> Anodic Black Matte</span>
+                  <span class="bento-pill"><i class="fa-solid fa-layer-group" style="color: var(--accent-bronze);"></i> Warm Bronze</span>
+                  <span class="bento-pill"><i class="fa-solid fa-layer-group" style="color: var(--accent-bronze);"></i> Champagne Satin</span>
+                </div>
+              </div>
+
+              <div style="height: 220px; border-radius: 20px; overflow: hidden; border: 1px solid var(--border-light);">
+                <img src="aseets/glass-frame-2.jpg" alt="Surface Finish Quality Detail" style="width: 100%; height: 100%; object-fit: cover;">
+              </div>
+            </div>
+          </div>
+
+          <!-- Bento Card 4: Acoustic & Wind Load Resistance (Stat 4-Col) -->
+          <div class="bento-card bento-stat-card bento-col-4">
+            <div class="bento-stat-icon"><i class="fa-solid fa-wind"></i></div>
+            <div>
+              <div class="bento-stat-val">220 km/h</div>
+              <div class="bento-stat-label">Storm Wind Pressure Rating (3,000 Pa)</div>
+            </div>
+            <p style="font-size: 0.8125rem; color: var(--text-muted); margin-top: 1rem; border-top: 1px solid var(--border-light); padding-top: 0.75rem;">
+              Certified under EN 12210 Class C5/B5 standards for hurricane-force coastal weather.
+            </p>
+          </div>
+
+          <!-- Bento Card 5: Thermal Insulation U-Value (Stat 4-Col Light) -->
+          <div class="bento-card bento-stat-card bento-col-4">
+            <div class="bento-stat-icon"><i class="fa-solid fa-temperature-arrow-down"></i></div>
+            <div>
+              <div class="bento-stat-val" style="color: var(--accent-bronze);">0.8 U</div>
+              <div class="bento-stat-label">Ultra-Low U-Value (W/m²K)</div>
+            </div>
+            <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-top: 1rem; border-top: 1px solid var(--border-light); padding-top: 0.75rem;">
+              Triple-glazed argon insulation chambers for extreme sub-zero or desert climate control.
+            </p>
+          </div>
+
+          <!-- Bento Card 6: Download System Brochure Tile (Stat 8-Col Light) -->
+          <div class="bento-card bento-col-8" style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border: 1px solid var(--border-light); color: var(--text-primary);">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
+              <div>
+                <span class="bento-tag" style="color: var(--accent-bronze);">SYSTEM BROCHURE & CATALOG</span>
+                <h3 class="bento-title" style="color: var(--text-primary); margin-bottom: 0.5rem;">Download System Brochure</h3>
+                <p style="font-size: 0.9rem; color: var(--text-secondary); max-width: 480px;">Access our complete product catalog, architectural system window specifications, finish options, and technical detail drawings.</p>
+              </div>
+              <div>
+                <button class="btn btn-primary" onclick="openQuoteModal('Hello Ashlar, please send me the official Product System Brochure & Catalog.')">
+                  Download Brochure <i class="fa-solid fa-file-pdf"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+    </div>
+  </main>
+
+  <!-- TECHNICAL SPECIFICATIONS & CERTIFIED PERFORMANCE SECTION -->
+  <section class="section-padding" style="background: var(--bg-main); padding-top: 0;">
+    <div class="container">
+      <div class="specs-advantages-grid reveal-up">
+        <!-- Left: Technical Specifications Table -->
+        <div>
+          <h2 style="font-size: 1.75rem; font-weight: 600; margin-bottom: 1.75rem; color: var(--text-primary);">Technical Specifications</h2>
+          <div class="spec-pill-table">
+            <div class="spec-pill-row">
+              <span class="spec-name">System Model</span>
+              <span class="spec-val">Ashlar System Windows</span>
+            </div>
+            <div class="spec-pill-row">
+              <span class="spec-name">Slim Vertical Interlock</span>
+              <span class="spec-val">14 mm Ultra-Narrow Profile</span>
+            </div>
+            <div class="spec-pill-row">
+              <span class="spec-name">Maximum Door Height</span>
+              <span class="spec-val">Max. 2,133 mm</span>
+            </div>
+            <div class="spec-pill-row">
+              <span class="spec-name">Maximum Sash Dimensions</span>
+              <span class="spec-val">Height: 2,100 mm | Width: 1,500 mm</span>
+            </div>
+            <div class="spec-pill-row">
+              <span class="spec-name">Maximum Sash Weight</span>
+              <span class="spec-val">Max. 130 kg</span>
+            </div>
+            <div class="spec-pill-row">
+              <span class="spec-name">Glass Options</span>
+              <span class="spec-val">Single & Laminated Glass</span>
+            </div>
+            <div class="spec-pill-row">
+              <span class="spec-name">Glass Thickness Range</span>
+              <span class="spec-val">Min. 8 mm – Max. 12 mm</span>
+            </div>
+            <div class="spec-pill-row">
+              <span class="spec-name">Locking Variant</span>
+              <span class="spec-val">Up Down Lock System</span>
+            </div>
+            <div class="spec-pill-row">
+              <span class="spec-name">Track Options</span>
+              <span class="spec-val">2 Track & 3 Track Typologies</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Certified Performance Card -->
+        <div class="advantages-card" style="background: #ffffff; border: 1px solid rgba(15,23,42,0.08); box-shadow: 0 10px 30px rgba(0,0,0,0.03);">
+          <div>
+            <h3 class="advantages-card-title" style="color: var(--text-primary);">Performance Ratings</h3>
+            <div class="advantage-list">
+              <div class="advantage-item">
+                <div class="advantage-icon">
+                  <i class="fa-solid fa-volume-xmark"></i>
+                </div>
+                <div class="advantage-text">
+                  <strong>Sound Insulation</strong>
+                  <p>Acoustic damping profiles reducing ambient urban noise pollution by up to 38 dB for serene living interiors.</p>
+                </div>
+              </div>
+
+              <div class="advantage-item">
+                <div class="advantage-icon">
+                  <i class="fa-solid fa-wind"></i>
+                </div>
+                <div class="advantage-text">
+                  <strong>Wind Load Resistance</strong>
+                  <p>Structural high-grade aluminum extrusions engineered for high wind pressure resistance (Class C5/B5 certified up to 220 km/h).</p>
+                </div>
+              </div>
+
+              <div class="advantage-item">
+                <div class="advantage-icon">
+                  <i class="fa-solid fa-fan"></i>
+                </div>
+                <div class="advantage-text">
+                  <strong>Air Permeability</strong>
+                  <p>Concealed continuous perimeter weather seals maintaining a tight, draught-free air seal.</p>
+                </div>
+              </div>
+
+              <div class="advantage-item">
+                <div class="advantage-icon">
+                  <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <div class="advantage-text">
+                  <strong>Impact Resistance</strong>
+                  <p>Toughened safety glass options engineered for structural durability and high impact safety.</p>
+                </div>
+              </div>
+
+              <div class="advantage-item">
+                <div class="advantage-icon">
+                  <i class="fa-solid fa-droplet"></i>
+                </div>
+                <div class="advantage-text">
+                  <strong>Water Tightness</strong>
+                  <p>Sub-floor drainage channel profiles preventing water penetration during heavy downpours.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-primary" style="width: 100%; margin-top: 1.5rem;" onclick="openQuoteModal('Hello Ashlar, I would like to request CAD DWG sections and BIM families for Ashlar system windows.')">
+            Download CAD & BIM Package <i class="fa-solid fa-download"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- MACRO ENGINEERING DETAILS SECTION -->
+  <section class="section-padding" style="background: var(--bg-main); border-top: 1px solid rgba(15,23,42,0.06);">
+    <div class="container">
+      <div style="margin-bottom: 3.5rem; text-align: center;" class="reveal-up">
+        <span class="section-tag">ENGINEERING DISCOVERY</span>
+        <h2 class="section-title">Macro Profile <strong>& Connection Details</strong></h2>
+        <p class="section-desc" style="margin: 0 auto; max-width: 640px;">
+          Explore sub-millimeter extrusion close-ups, concealed sub-floor runner tracks, and structural glass edge joinery.
+        </p>
+      </div>
+
+      <div class="macro-details-grid reveal-up">
+        <!-- Card 1 -->
+        <div class="macro-card trigger-lightbox" data-img="aseets/glass-frame-9.jpg">
+          <div class="macro-card-img">
+            <img src="aseets/glass-frame-9.jpg" alt="14mm Slim Interlock Profile Edge">
+            <div class="macro-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          </div>
+          <div class="macro-card-body">
+            <div class="macro-tag">EXTRUSION DETAIL</div>
+            <h4>14mm Vertical Interlock Edge</h4>
+            <p>High-tensile aluminum alloy profile with integrated double EPDM gaskets for slim sightlines.</p>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="macro-card trigger-lightbox" data-img="aseets/glass-frame-10.jpg">
+          <div class="macro-card-img">
+            <img src="aseets/glass-frame-10.jpg" alt="Concealed Sub-Floor Concrete Channel">
+            <div class="macro-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          </div>
+          <div class="macro-card-body">
+            <div class="macro-tag">SUB-FLOOR INTEGRATION</div>
+            <h4>Flush Concrete Track Mounting</h4>
+            <p>Concealed stainless steel runner embedded seamlessly into concrete slabs for a continuous step-free finish.</p>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="macro-card trigger-lightbox" data-img="aseets/glass-frame-11.jpg">
+          <div class="macro-card-img">
+            <img src="aseets/glass-frame-11.jpg" alt="Perimeter Frame Glazing Channel">
+            <div class="macro-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          </div>
+          <div class="macro-card-body">
+            <div class="macro-tag">ACOUSTIC & THERMAL</div>
+            <h4>Perimeter Glazing Barrier</h4>
+            <p>Multi-chamber thermal break insulation with acoustic sound-dampening perimeter channels.</p>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="macro-card trigger-lightbox" data-img="aseets/glass-frame-12.jpg">
+          <div class="macro-card-img">
+            <img src="aseets/glass-frame-12.jpg" alt="Corner Joint & Glass Edge">
+            <div class="macro-zoom-icon"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          </div>
+          <div class="macro-card-body">
+            <div class="macro-tag">CORNER & GLAZING</div>
+            <h4>Precision Glass Corner Joint</h4>
+            <p>Clean glass-to-glass structural joint providing unobstructed panoramic views with high structural integrity.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- MINIMALIST LIGHT FOOTER -->
+  <footer class="site-footer-minimal">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div class="footer-brand-col">
+          <div class="footer-brand-title">ASHLAR</div>
+          <p class="footer-brand-desc">
+            Pioneering structural clarity and advanced architectural glass solutions for the built environment.
+          </p>
+        </div>
+
+        <div class="footer-nav-col">
+          <a href="index.html">Home</a>
+          <a href="product-details.html">Product Systems</a>
+          <a href="contact.html">Contact Us</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <div>© 2026 Ashlar Architectural Glass. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX MODAL -->
+  <div class="modal" id="lightbox-modal">
+    <button class="modal-close"><i class="fa-solid fa-xmark"></i></button>
+    <div class="lightbox-img-container">
+      <img id="lightbox-img" src="" alt="Architectural Glass Full Screen Preview">
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+</body>
+</html>
