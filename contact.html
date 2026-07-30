@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us — Ashlar Architectural Advisory & Showrooms</title>
-  <meta name="description" content="Get in touch with Ashlar architectural glass engineers in Zurich, Dubai, New York, and Tokyo for project consultations, CAD specification reviews, and showroom appointments.">
+  <meta name="description" content="Get in touch with Ashlar architectural glass engineers in Calicut, Kerala for project consultations, CAD specification reviews, and showroom appointments.">
   
   <!-- Google Fonts & FontAwesome -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,6 +17,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="aseets/favicon.png">
+
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -26,8 +29,8 @@
   <header class="header">
     <div class="container container-wide">
       <div class="header-inner">
-        <a href="index.html" class="logo">
-          <span>ASHLAR</span>
+        <a href="index.html" class="logo" aria-label="Ashlar Architectural Glass">
+          <img src="aseets/logo.png" alt="Ashlar Architectural Glass Logo" class="logo-img">
         </a>
 
         <nav class="nav-menu">
@@ -51,8 +54,8 @@
   <!-- MOBILE NAVIGATION DRAWER -->
   <div class="mobile-drawer" id="mobile-drawer">
     <div class="mobile-drawer-header">
-      <a href="index.html" class="logo">
-        <span>ASHLAR</span>
+      <a href="index.html" class="logo" aria-label="Ashlar Architectural Glass">
+        <img src="aseets/logo.png" alt="Ashlar Architectural Glass Logo" class="logo-img">
       </a>
       <button class="mobile-drawer-close" aria-label="Close navigation menu">
         <i class="fa-solid fa-xmark"></i>
@@ -108,28 +111,28 @@
         <div class="reveal-up">
           <div class="contact-advisory-card">
             <div>
-              <div style="margin-bottom: 2rem;">
-                <span class="badge" style="background: rgba(37, 211, 102, 0.1); color: #25D366; border-color: rgba(37, 211, 102, 0.3); margin-bottom: 1.25rem;">
+              <div class="contact-card-header">
+                <span class="badge badge-whatsapp">
                   <i class="fa-brands fa-whatsapp"></i> DIRECT WHATSAPP ADVISORY
                 </span>
-                <h3 style="font-size: 1.85rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--text-primary);">Instant Quote & Architectural Consultation</h3>
-                <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.65;">
+                <h3 class="contact-card-title">Instant Quote & Architectural Consultation</h3>
+                <p class="contact-card-desc">
                   Connect directly with our chief facade engineers on WhatsApp for real-time section DWGs, structural wind load data, and custom project pricing estimates.
                 </p>
               </div>
 
               <div class="contact-whatsapp-box">
-                <div style="width: 52px; height: 52px; border-radius: 50%; background: #25D366; display: grid; place-items: center; color: #fff; font-size: 1.6rem; flex-shrink: 0; box-shadow: 0 6px 15px rgba(37, 211, 102, 0.3);">
+                <div class="whatsapp-icon-circle">
                   <i class="fa-brands fa-whatsapp"></i>
                 </div>
                 <div>
-                  <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;">Official WhatsApp Advisory</div>
-                  <div style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-top: 0.15rem;">+91 98956 52725</div>
+                  <div class="whatsapp-box-label">Official WhatsApp Advisory</div>
+                  <div class="whatsapp-box-number">+91 98956 52725</div>
                 </div>
               </div>
             </div>
 
-            <a href="https://wa.me/919895652725?text=Hello%20Ashlar%2C%20I%20would%20like%20to%20request%20a%20quote%20and%20architectural%20specifications%20for%20my%20project." target="_blank" class="btn-whatsapp" style="width: 100%; padding: 1.15rem; font-size: 0.9375rem;">
+            <a href="https://wa.me/919895652725?text=Hello%20Ashlar%2C%20I%20would%20like%20to%20request%20a%20quote%20and%20architectural%20specifications%20for%20my%20project." target="_blank" class="btn-whatsapp btn-whatsapp-full">
               Chat on WhatsApp <i class="fa-brands fa-whatsapp"></i>
             </a>
           </div>
@@ -137,27 +140,27 @@
 
         <!-- Right Column: Single Showroom Location & Map -->
         <div class="reveal-up">
-          <div style="margin-bottom: 2rem;">
+          <div class="contact-studio-header">
             <span class="section-tag">GLOBAL HEADQUARTERS</span>
-            <h3 style="font-size: 1.75rem; font-weight: 700;">Visit Our Design Studio</h3>
-            <p style="color: var(--text-secondary); font-size: 0.9375rem; margin-top: 0.5rem;">
+            <h3 class="contact-studio-title">Visit Our Design Studio</h3>
+            <p class="contact-studio-desc">
               Experience 1:1 scale operational glass installations, touch finish samples, and consult with our senior technical advisors.
             </p>
           </div>
 
           <!-- Location Info Card with Showroom Image -->
-          <div style="border-radius: var(--radius-md); overflow: hidden; margin-bottom: 1.5rem; height: 180px; box-shadow: var(--card-shadow);">
-            <img src="aseets/glass-frame-7.png" alt="Ashlar Showroom Preview" style="width: 100%; height: 100%; object-fit: cover;">
+          <div class="showroom-preview-box">
+            <img src="aseets/glass-frame-7.png" alt="Ashlar Showroom Preview">
           </div>
 
           <div class="location-card">
             <div class="location-city">
-              <span>Zürich Engineering HQ</span>
-              <span style="font-size: 0.75rem; background: var(--bg-subtle); padding: 0.25rem 0.75rem; border-radius: var(--radius-pill); font-weight: 600;">GLOBAL HEADQUARTERS</span>
+              <span class="location-city-name">Calicut Engineering HQ</span>
+              <span class="location-badge">GLOBAL HEADQUARTERS</span>
             </div>
             <div class="location-address">
-              Gotthardstrasse 26, 8002 Zürich, Switzerland<br>
-              Open Monday – Friday: 08:30 – 18:00 CET
+              Calicut (Kozhikode), Kerala, India<br>
+              Open Monday – Saturday: 09:00 – 18:00 IST
             </div>
             <div class="location-contact">
               <div><i class="fa-solid fa-phone" style="width: 20px;"></i> +91 98956 52725</div>
@@ -167,15 +170,15 @@
 
           <!-- Embedded Map -->
           <div class="map-box">
-            <iframe id="showroom-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d86475.29130713783!2d8.4651347!3d47.3774337!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900b9749bea219%3A0x73d9830e208b03d3!2sZurich%2C%20Switzerland!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s" allowfullscreen="" loading="lazy"></iframe>
+            <iframe id="showroom-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125218.42823616656!2d75.73600649726563!3d11.2587531!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba65938563d4747%3A0x32150641ca32ec13!2sKozhikode%2C%20Kerala!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
           </div>
 
           <div class="contact-specifier-box">
             <div>
-              <div style="font-weight: 700; font-size: 1rem;">Direct Technical Specifier Line</div>
-              <div style="font-size: 0.875rem; color: var(--text-secondary);">Speak directly with a facade engineer.</div>
+              <div class="specifier-box-title">Direct Technical Specifier Line</div>
+              <div class="specifier-box-desc">Speak directly with a facade engineer.</div>
             </div>
-            <a href="https://wa.me/919895652725?text=Hello%20Ashlar%2C%20I%20would%20like%20to%20speak%20with%20a%20facade%20engineer." target="_blank" class="btn btn-secondary" style="background: var(--bg-surface);">Chat Now</a>
+            <a href="https://wa.me/919895652725?text=Hello%20Ashlar%2C%20I%20would%20like%20to%20speak%20with%20a%20facade%20engineer." target="_blank" class="btn btn-secondary btn-specifier">Chat Now</a>
           </div>
         </div>
       </div>
@@ -184,8 +187,8 @@
 
 
   <!-- READY FOR SPECIFICATION SECTION -->
-  <section class="spec-cta-section reveal-up">
-    <div class="spec-cta-container">
+  <section class="spec-cta-section">
+    <div class="spec-cta-container reveal-up">
       <div class="spec-cta-pill">AVAILABILITY: WORLDWIDE SHIPPING</div>
       <h2 class="spec-cta-title">
         READY FOR<br>
@@ -205,27 +208,25 @@
     </div>
   </section>
 
-  <!-- MINIMALIST LIGHT FOOTER -->
-  <footer class="site-footer-minimal">
+  <!-- MINIMAL CLEAN FOOTER -->
+  <footer class="site-footer-minimal-clean">
     <div class="container">
-      <div class="footer-top-grid">
-        <div class="footer-brand-col">
-          <div class="footer-brand-title">ASHLAR</div>
-          <p class="footer-brand-desc">
-            Pioneering structural clarity and advanced architectural glass solutions for the built environment.
-          </p>
-        </div>
-
-        <div class="footer-nav-col">
+      <div class="footer-minimal-top">
+        <a href="index.html" class="footer-minimal-logo" aria-label="Ashlar Architectural Glass">
+          <img src="aseets/logo.png" alt="Ashlar Architectural Glass Logo" class="footer-logo-img">
+        </a>
+        <div class="footer-minimal-links">
+          <a href="product-details.html">Product Systems</a>
+          <a href="contact.html">Contact Us</a>
           <a href="#">Privacy Policy</a>
           <a href="#">Terms of Service</a>
-          <a href="#">Sustainability Report</a>
-          <a href="contact.html">Contact</a>
         </div>
       </div>
-
-      <div class="footer-bottom-bar">
+      <div class="footer-minimal-bottom">
         <div>© 2026 Ashlar Architectural Glass. All rights reserved.</div>
+        <button type="button" class="footer-back-to-top-minimal" aria-label="Back to Top">
+          <span>Back to Top ↑</span>
+        </button>
       </div>
     </div>
   </footer>

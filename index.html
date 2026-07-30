@@ -17,6 +17,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="aseets/favicon.png">
+
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -26,8 +29,8 @@
   <header class="header">
     <div class="container container-wide">
       <div class="header-inner">
-        <a href="index.html" class="logo">
-          <span>ASHLAR</span>
+        <a href="index.html" class="logo" aria-label="Ashlar Architectural Glass">
+          <img src="aseets/logo.png" alt="Ashlar Architectural Glass Logo" class="logo-img">
         </a>
 
         <nav class="nav-menu">
@@ -51,8 +54,8 @@
   <!-- MOBILE NAVIGATION DRAWER -->
   <div class="mobile-drawer" id="mobile-drawer">
     <div class="mobile-drawer-header">
-      <a href="index.html" class="logo">
-        <span>ASHLAR</span>
+      <a href="index.html" class="logo" aria-label="Ashlar Architectural Glass">
+        <img src="aseets/logo.png" alt="Ashlar Architectural Glass Logo" class="logo-img">
       </a>
       <button class="mobile-drawer-close" aria-label="Close navigation menu">
         <i class="fa-solid fa-xmark"></i>
@@ -191,9 +194,88 @@
     </div>
   </section>
 
+  <!-- CERTIFIED ARCHITECTURAL STANDARDS SECTION (ASHLAR SYSTEM WINDOWS PERFORMANCE ENGINEERING) -->
+  <section class="performance-standards-section" id="performance">
+    <div class="container">
+      <div class="perf-standards-grid reveal-up">
+        
+        <!-- Left Column: Performance Specifications & Track Options -->
+        <div class="perf-content-col">
+          <h2 class="perf-main-title">
+            ARCHITECTURAL<br>
+            STANDARDS
+          </h2>
+          <p class="perf-main-desc">
+            Ashlar system windows are rigorously tested to demanding environmental conditions, ensuring longevity and comfort through advanced layering.
+          </p>
+
+          <!-- 2x2 Performance Metrics Grid -->
+          <div class="perf-metrics-grid">
+            <div class="perf-metric-item">
+              <span class="perf-metric-icon">
+                <i class="fa-solid fa-volume-xmark"></i>
+              </span>
+              <span class="perf-metric-label">SOUND INSULATION</span>
+            </div>
+
+            <div class="perf-metric-item">
+              <span class="perf-metric-icon">
+                <i class="fa-solid fa-wind"></i>
+              </span>
+              <span class="perf-metric-label">WIND LOAD</span>
+            </div>
+
+            <div class="perf-metric-item">
+              <span class="perf-metric-icon">
+                <i class="fa-solid fa-fan"></i>
+              </span>
+              <span class="perf-metric-label">AIR PERMEABILITY</span>
+            </div>
+
+            <div class="perf-metric-item">
+              <span class="perf-metric-icon">
+                <i class="fa-solid fa-droplet"></i>
+              </span>
+              <span class="perf-metric-label">WATER TIGHTNESS</span>
+            </div>
+          </div>
+
+          <!-- Track Options -->
+          <div class="perf-track-options">
+            <span class="perf-track-title">TRACK OPTIONS</span>
+            <div class="perf-track-pills">
+              <button class="perf-pill-btn" onclick="openQuoteModal('Hello Ashlar, I would like to inquire about 2 Track options for Ashlar system windows.')">2 TRACK</button>
+              <button class="perf-pill-btn" onclick="openQuoteModal('Hello Ashlar, I would like to inquire about 3 Track options for Ashlar system windows.')">3 TRACK</button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Column: Technical Showcase with Floating Transparency Card -->
+        <div class="perf-showcase-wrapper">
+          <div class="perf-image-box">
+            <img src="aseets/glass-frame-13.png" alt="Ashlar System Windows Architectural Glass System Engineering Profile">
+          </div>
+
+          <!-- Floating Gradient Box UI -->
+          <div class="perf-transparency-box">
+            <div class="perf-transparency-line"></div>
+            <h3 class="perf-transparency-title">
+              ASHLAR SYSTEM<br>
+              STRUCTURAL<br>
+              INTEGRITY
+            </h3>
+            <p class="perf-transparency-desc">
+              Precision engineered for high-load architectural applications.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
 
 
-  <!-- ARCHITECTURAL USE CASES & TYPOLOGIES SECTION -->
   <section class="section-padding" style="background: #f8fafc; border-top: 1px solid rgba(15,23,42,0.06);" id="use-cases">
     <div class="container">
       <div style="text-align: center; margin-bottom: 3.5rem;" class="reveal-up">
@@ -323,8 +405,8 @@
   </section>
 
   <!-- READY FOR SPECIFICATION SECTION -->
-  <section class="spec-cta-section reveal-up">
-    <div class="spec-cta-container">
+  <section class="spec-cta-section">
+    <div class="spec-cta-container reveal-up">
       <div class="spec-cta-pill">AVAILABILITY: WORLDWIDE SHIPPING</div>
       <h2 class="spec-cta-title">
         READY FOR<br>
@@ -344,36 +426,37 @@
     </div>
   </section>
 
-  <!-- MINIMALIST LIGHT FOOTER -->
-  <footer class="site-footer-minimal">
+  <!-- MINIMAL CLEAN FOOTER -->
+  <footer class="site-footer-minimal-clean">
     <div class="container">
-      <div class="footer-top-grid">
-        <div class="footer-brand-col">
-          <div class="footer-brand-title">ASHLAR</div>
-          <p class="footer-brand-desc">
-            Pioneering structural clarity and advanced architectural glass solutions for the built environment.
-          </p>
-        </div>
-
-        <div class="footer-nav-col">
+      <div class="footer-minimal-top">
+        <a href="index.html" class="footer-minimal-logo" aria-label="Ashlar Architectural Glass">
+          <img src="aseets/logo.png" alt="Ashlar Architectural Glass Logo" class="footer-logo-img">
+        </a>
+        <div class="footer-minimal-links">
           <a href="product-details.html">Product Systems</a>
           <a href="contact.html">Contact Us</a>
           <a href="#">Privacy Policy</a>
           <a href="#">Terms of Service</a>
         </div>
       </div>
-
-      <div class="footer-bottom-bar">
+      <div class="footer-minimal-bottom">
         <div>© 2026 Ashlar Architectural Glass. All rights reserved.</div>
+        <button type="button" class="footer-back-to-top-minimal" aria-label="Back to Top">
+          <span>Back to Top ↑</span>
+        </button>
       </div>
     </div>
   </footer>
 
   <!-- LIGHTBOX MODAL -->
   <div class="modal" id="lightbox-modal">
-    <button class="modal-close"><i class="fa-solid fa-xmark"></i></button>
+    <button class="modal-close" aria-label="Close modal"><i class="fa-solid fa-xmark"></i></button>
     <div class="lightbox-img-container">
+      <button class="lightbox-nav-btn lightbox-prev" aria-label="Previous Image"><i class="fa-solid fa-chevron-left"></i></button>
       <img id="lightbox-img" src="" alt="Architectural Glass Full Screen Preview">
+      <button class="lightbox-nav-btn lightbox-next" aria-label="Next Image"><i class="fa-solid fa-chevron-right"></i></button>
+      <div class="lightbox-caption"></div>
     </div>
   </div>
 

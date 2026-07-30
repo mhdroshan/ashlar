@@ -17,6 +17,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="aseets/favicon.png">
+
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -26,8 +29,8 @@
   <header class="header">
     <div class="container container-wide">
       <div class="header-inner">
-        <a href="index.html" class="logo">
-          <span>ASHLAR</span>
+        <a href="index.html" class="logo" aria-label="Ashlar Architectural Glass">
+          <img src="aseets/logo.png" alt="Ashlar Architectural Glass Logo" class="logo-img">
         </a>
 
         <nav class="nav-menu">
@@ -51,8 +54,8 @@
   <!-- MOBILE NAVIGATION DRAWER -->
   <div class="mobile-drawer" id="mobile-drawer">
     <div class="mobile-drawer-header">
-      <a href="index.html" class="logo">
-        <span>ASHLAR</span>
+      <a href="index.html" class="logo" aria-label="Ashlar Architectural Glass">
+        <img src="aseets/logo.png" alt="Ashlar Architectural Glass Logo" class="logo-img">
       </a>
       <button class="mobile-drawer-close" aria-label="Close navigation menu">
         <i class="fa-solid fa-xmark"></i>
@@ -101,11 +104,11 @@
 
       <!-- TITLE & SUBTITLE -->
       <div style="margin-bottom: 2.5rem;" class="reveal-up">
-        <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(15,23,42,0.05); padding: 0.35rem 0.9rem; border-radius: var(--radius-pill); font-size: 0.725rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 0.85rem;">
+        <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(15,23,42,0.05); padding: 0.35rem 0.9rem; border-radius: var(--radius-pill); font-size: 0.725rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 0.85rem; max-width: 100%; flex-wrap: wrap;">
           SYSTEM MODEL: ASHLAR SYSTEM WINDOWS
         </div>
-        <h1 class="section-title" style="font-size: clamp(2.5rem, 5vw, 3.8rem); font-weight: 500; margin-bottom: 1rem; color: var(--text-primary);">Ashlar System Windows</h1>
-        <p class="section-desc" style="max-width: 720px; font-size: 1.05rem; color: var(--text-secondary); line-height: 1.65;">
+        <h1 class="section-title" style="font-size: clamp(1.85rem, 5vw, 3.8rem); font-weight: 500; margin-bottom: 1rem; color: var(--text-primary); line-height: 1.15;">Ashlar System Windows</h1>
+        <p class="section-desc" style="max-width: 720px; font-size: clamp(0.95rem, 1.8vw, 1.05rem); color: var(--text-secondary); line-height: 1.65;">
           Minimalist sliding window and door system engineered with an ultra-slim 14mm vertical interlock profile, 2 & 3 track typologies, Up-Down lock variants, and certified weather resistance.
         </p>
       </div>
@@ -121,7 +124,7 @@
         </div>
 
         <!-- Vertical Thumbnail Column -->
-        <div class="gallery-thumb-col">
+        <div class="gallery-thumb-col" data-lenis-prevent="true">
           <div class="gallery-thumb-card active" data-fullsrc="aseets/glass-frame-6.png" title="Installed Architectural Villa View">
             <img src="aseets/glass-frame-6.png" alt="Ashlar System Windows Installed Villa View">
           </div>
@@ -144,122 +147,114 @@
       </div>
 
       <!-- SYSTEMS & ENGINEERING BENTO SECTION (ATTACHMENT REDESIGN) -->
-      <section class="eng-bento-section reveal-up" id="featured">
-        <div class="container">
-          <!-- Section Header with Log Switcher -->
+      <section class="eng-bento-section" id="featured">
+        <div class="">
+          <!-- Section Header -->
           <div class="eng-bento-header reveal-up">
             <div class="eng-bento-title-wrap">
               <span class="section-tag" style="margin-bottom: 0.35rem;">ENGINEERING HIGHLIGHTS</span>
               <h2 class="eng-bento-section-title">ENGINEERING PRECISION</h2>
             </div>
-            
-            <div class="eng-log-switcher">
-              <button class="eng-log-btn active" data-log="v2.026" onclick="switchSystemLog('v2.026')">SYSTEM_LOG_v2.026</button>
-              <button class="eng-log-btn" data-log="v2.028" onclick="switchSystemLog('v2.028')">SYSTEM_LOG_v2.028</button>
-            </div>
           </div>
 
-          <!-- Upper Bento Grid -->
+          <!-- Upper Bento Grid (All Major Key Specs in a Single Tab) -->
           <div class="eng-bento-grid reveal-up">
-            <!-- Card 1: Main Structural / Sash Performance (Tall) -->
+            <!-- Card 1: Structural Integrity (Tall / Detailed) -->
             <div class="eng-card eng-card-tall">
               <div class="eng-circle-badge">
-                <i class="fa-solid fa-compass-drafting" id="eng-icon-1"></i>
+                <i class="fa-solid fa-compass-drafting"></i>
               </div>
               <div>
-                <span class="eng-card-tag" id="eng-tag-1">STRUCTURAL INTEGRITY</span>
-                <div class="eng-hero-val" id="eng-val-1">12kN/m²</div>
-                <div class="eng-hero-val-sub" id="eng-sub-1"></div>
+                <span class="eng-card-tag">STRUCTURAL INTEGRITY</span>
+                <div class="eng-hero-val">12kN/m²</div>
+                <div class="eng-hero-val-sub">HIGH WIND & STRUCTURAL LOAD</div>
               </div>
               <div class="eng-card-desc-wrap">
-                <p class="eng-card-desc" id="eng-desc-1">
+                <p class="eng-card-desc">
                   Designed to withstand extreme vertical and horizontal stress. Our proprietary ion-exchange process strengthens the surface at a molecular level.
                 </p>
               </div>
             </div>
 
-            <!-- Card 2: Visual Clarity / Profile Precision (Wide) -->
+            <!-- Card 2: Sash Performance (Tall / Detailed) -->
+            <div class="eng-card eng-card-tall">
+              <div class="eng-circle-badge">
+                <i class="fa-solid fa-weight-hanging"></i>
+              </div>
+              <div>
+                <span class="eng-card-tag">SASH PERFORMANCE</span>
+                <div class="eng-hero-val">130kg</div>
+                <div class="eng-hero-val-sub">MAX SASH WEIGHT</div>
+              </div>
+              <div class="eng-card-desc-wrap">
+                <p class="eng-card-desc">
+                  Equipped with Up-Down Lock variants for enhanced security and smooth operation. Designed for heavy-duty architectural applications.
+                </p>
+              </div>
+            </div>
+
+            <!-- Card 3: Visual Clarity (Wide) -->
             <div class="eng-card eng-card-wide">
               <div class="eng-circle-badge">
-                <i class="fa-solid fa-eye" id="eng-icon-2"></i>
+                <i class="fa-solid fa-eye"></i>
               </div>
               <div>
-                <span class="eng-card-tag" id="eng-tag-2">VISUAL CLARITY</span>
-                <div class="eng-hero-val" id="eng-val-2">99.8%</div>
-                <div class="eng-hero-val-sub" id="eng-sub-2">ULTRA-LOW IRON CONTENT</div>
+                <span class="eng-card-tag">VISUAL CLARITY</span>
+                <div class="eng-hero-val">99.8%</div>
+                <div class="eng-hero-val-sub">ULTRA-LOW IRON CONTENT</div>
               </div>
             </div>
 
-            <!-- Card 3: Max Size / Max Door Height (Square) -->
-            <div class="eng-card eng-card-square">
-              <div class="eng-square-icon-wrap">
-                <i class="fa-solid fa-ruler-combined" id="eng-icon-3"></i>
+            <!-- Card 4: Profile Precision (Wide) -->
+            <div class="eng-card eng-card-wide">
+              <div class="eng-circle-badge">
+                <i class="fa-solid fa-border-all"></i>
               </div>
-              <span class="eng-card-tag" id="eng-label-3">MAX SIZE</span>
-              <div class="eng-square-val" id="eng-val-3">4x12m</div>
+              <div>
+                <span class="eng-card-tag">PROFILE PRECISION</span>
+                <div class="eng-hero-val">14mm</div>
+                <div class="eng-hero-val-sub">SLIM INTERLOCK WIDTH</div>
+              </div>
             </div>
 
-            <!-- Card 4: Weight / Glass Thickness (Square) -->
+            <!-- Card 5: Max Panel Size (Square) -->
             <div class="eng-card eng-card-square">
               <div class="eng-square-icon-wrap">
-                <i class="fa-solid fa-scale-balanced" id="eng-icon-4"></i>
+                <i class="fa-solid fa-ruler-combined"></i>
               </div>
-              <span class="eng-card-tag" id="eng-label-4">WEIGHT</span>
-              <div class="eng-square-val" id="eng-val-4">25kg/m²</div>
+              <span class="eng-card-tag">MAX PANEL SIZE</span>
+              <div class="eng-square-val">4×12m</div>
+            </div>
+
+            <!-- Card 6: Max Door Height (Square) -->
+            <div class="eng-card eng-card-square">
+              <div class="eng-square-icon-wrap">
+                <i class="fa-solid fa-arrows-up-down"></i>
+              </div>
+              <span class="eng-card-tag">MAX DOOR HEIGHT</span>
+              <div class="eng-square-val">2,133mm</div>
+            </div>
+
+            <!-- Card 7: Glass Thickness (Square) -->
+            <div class="eng-card eng-card-square">
+              <div class="eng-square-icon-wrap">
+                <i class="fa-solid fa-layer-group"></i>
+              </div>
+              <span class="eng-card-tag">GLASS THICKNESS</span>
+              <div class="eng-square-val">8–12mm</div>
+            </div>
+
+            <!-- Card 8: Glass Weight (Square) -->
+            <div class="eng-card eng-card-square">
+              <div class="eng-square-icon-wrap">
+                <i class="fa-solid fa-scale-balanced"></i>
+              </div>
+              <span class="eng-card-tag">GLASS WEIGHT</span>
+              <div class="eng-square-val">25kg/m²</div>
             </div>
           </div>
 
-          <!-- Lower Bento Card: Certified Architectural Standards (Attachment Image 2) -->
-          <div class="eng-card eng-standards-card reveal-up">
-            <!-- Left Side Preview / Context -->
-            <div style="position: relative; border-radius: 12px; overflow: hidden; height: 100%; min-height: 220px; background: #f8fafc; border: 1px solid #e2e8f0; display: flex; flex-direction: column; justify-content: space-between; padding: 1.75rem;">
-              <div>
-                <span class="eng-card-tag">SYSTEM PROFILE DETAIL</span>
-                <h4 style="font-size: 1.2rem; font-weight: 700; color: #0f172a; margin-top: 0.25rem;">V-14 Minimal Extrusion</h4>
-                <p style="font-size: 0.85rem; color: #64748b; margin-top: 0.5rem;">Precision-engineered structural aluminum with integrated thermal break chambers and concealed drainage channels.</p>
-              </div>
-              <div style="display: flex; gap: 0.75rem; align-items: center; margin-top: 1.5rem; flex-wrap: wrap;">
-                <span style="font-family: monospace; font-size: 0.75rem; font-weight: 700; background: #ffffff; border: 1px solid #cbd5e1; padding: 0.3rem 0.65rem; border-radius: 4px; color: #334155;">ISO 9001 TESTED</span>
-                <span style="font-family: monospace; font-size: 0.75rem; font-weight: 700; background: #ffffff; border: 1px solid #cbd5e1; padding: 0.3rem 0.65rem; border-radius: 4px; color: #334155;">CE CERTIFIED</span>
-              </div>
-            </div>
 
-            <!-- Right Side Standards & Performance Features -->
-            <div class="eng-standards-content">
-              <span class="eng-card-tag">PERFORMANCE ENGINEERING</span>
-              <h3 class="eng-standards-title">CERTIFIED ARCHITECTURAL STANDARDS</h3>
-              <p class="eng-standards-desc">
-                The V-14 system is rigorously tested to meet the most demanding environmental conditions, ensuring longevity and comfort.
-              </p>
-
-              <div class="eng-features-grid">
-                <div class="eng-feature-pill">
-                  <i class="fa-solid fa-volume-xmark"></i>
-                  <span>SOUND INSULATION</span>
-                </div>
-                <div class="eng-feature-pill">
-                  <i class="fa-solid fa-wind"></i>
-                  <span>WIND LOAD</span>
-                </div>
-                <div class="eng-feature-pill">
-                  <i class="fa-solid fa-fan"></i>
-                  <span>AIR PERMEABILITY</span>
-                </div>
-                <div class="eng-feature-pill">
-                  <i class="fa-solid fa-droplet"></i>
-                  <span>WATER TIGHTNESS</span>
-                </div>
-              </div>
-
-              <div class="eng-track-options">
-                <div class="eng-track-label">Track Options</div>
-                <div class="eng-track-badges">
-                  <span class="eng-track-badge">2 TRACK</span>
-                  <span class="eng-track-badge">3 TRACK</span>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -449,8 +444,8 @@
 
 
   <!-- READY FOR SPECIFICATION SECTION -->
-  <section class="spec-cta-section reveal-up">
-    <div class="spec-cta-container">
+  <section class="spec-cta-section">
+    <div class="spec-cta-container reveal-up">
       <div class="spec-cta-pill">AVAILABILITY: WORLDWIDE SHIPPING</div>
       <h2 class="spec-cta-title">
         READY FOR<br>
@@ -470,36 +465,37 @@
     </div>
   </section>
 
-  <!-- MINIMALIST LIGHT FOOTER -->
-  <footer class="site-footer-minimal">
+  <!-- MINIMAL CLEAN FOOTER -->
+  <footer class="site-footer-minimal-clean">
     <div class="container">
-      <div class="footer-top-grid">
-        <div class="footer-brand-col">
-          <div class="footer-brand-title">ASHLAR</div>
-          <p class="footer-brand-desc">
-            Pioneering structural clarity and advanced architectural glass solutions for the built environment.
-          </p>
-        </div>
-
-        <div class="footer-nav-col">
-          <a href="index.html">Home</a>
+      <div class="footer-minimal-top">
+        <a href="index.html" class="footer-minimal-logo" aria-label="Ashlar Architectural Glass">
+          <img src="aseets/logo.png" alt="Ashlar Architectural Glass Logo" class="footer-logo-img">
+        </a>
+        <div class="footer-minimal-links">
           <a href="product-details.html">Product Systems</a>
           <a href="contact.html">Contact Us</a>
           <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
         </div>
       </div>
-
-      <div class="footer-bottom-bar">
+      <div class="footer-minimal-bottom">
         <div>© 2026 Ashlar Architectural Glass. All rights reserved.</div>
+        <button type="button" class="footer-back-to-top-minimal" aria-label="Back to Top">
+          <span>Back to Top ↑</span>
+        </button>
       </div>
     </div>
   </footer>
 
   <!-- LIGHTBOX MODAL -->
   <div class="modal" id="lightbox-modal">
-    <button class="modal-close"><i class="fa-solid fa-xmark"></i></button>
+    <button class="modal-close" aria-label="Close modal"><i class="fa-solid fa-xmark"></i></button>
     <div class="lightbox-img-container">
+      <button class="lightbox-nav-btn lightbox-prev" aria-label="Previous Image"><i class="fa-solid fa-chevron-left"></i></button>
       <img id="lightbox-img" src="" alt="Architectural Glass Full Screen Preview">
+      <button class="lightbox-nav-btn lightbox-next" aria-label="Next Image"><i class="fa-solid fa-chevron-right"></i></button>
+      <div class="lightbox-caption"></div>
     </div>
   </div>
 

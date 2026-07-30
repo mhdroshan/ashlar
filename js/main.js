@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initLocationSwitcher();
   initScrollytelling();
   initLifestyleHotspots();
+  initFooterUtilities();
 });
 
 /* --------------------------------------------------
@@ -34,19 +35,19 @@ function initLenisScroll() {
       touchMultiplier: 2.0,
     });
 
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-
-    // Synchronize Lenis with GSAP ScrollTrigger if available
+    // Synchronize Lenis with GSAP ScrollTrigger if available (do NOT run separate RAF loop)
     if (typeof ScrollTrigger !== 'undefined') {
       lenis.on('scroll', ScrollTrigger.update);
       gsap.ticker.add((time) => {
         lenis.raf(time * 1000);
       });
       gsap.ticker.lagSmoothing(0);
+    } else {
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+      requestAnimationFrame(raf);
     }
   }
 }
@@ -85,6 +86,9 @@ function initMobileMenu() {
       toggleBtn.setAttribute('aria-expanded', 'true');
     }
     document.body.style.overflow = 'hidden';
+    if (typeof lenis !== 'undefined' && lenis) {
+      lenis.stop();
+    }
   };
 
   const closeMenu = () => {
@@ -94,6 +98,9 @@ function initMobileMenu() {
       toggleBtn.setAttribute('aria-expanded', 'false');
     }
     document.body.style.overflow = '';
+    if (typeof lenis !== 'undefined' && lenis) {
+      lenis.start();
+    }
   };
 
   if (toggleBtn) {
@@ -145,16 +152,19 @@ function initGSAPAnimations() {
   const revealElements = document.querySelectorAll('.reveal-up');
   revealElements.forEach(el => {
     gsap.fromTo(el, 
-      { opacity: 0, y: 40 },
+      { opacity: 0, y: 30 },
       {
         opacity: 1,
         y: 0,
-        duration: 1,
+        duration: 0.9,
         ease: 'power3.out',
         scrollTrigger: {
           trigger: el,
-          start: 'top 88%',
+          start: 'top 95%',
           toggleActions: 'play none none none'
+        },
+        onComplete: () => {
+          gsap.set(el, { clearProps: 'transform' });
         }
       }
     );
@@ -283,6 +293,16 @@ function initFinishConfigurator() {
 function initProductGallery() {
   const thumbs = document.querySelectorAll('.gallery-thumb-card, .thumb-item');
   const mainImg = document.querySelector('#main-gallery-img, .product-main-img');
+  const mainContainer = document.querySelector('.gallery-main-container');
+  const thumbCols = document.querySelectorAll('.gallery-thumb-col');
+
+  // Prevent Lenis smooth scroll from hijacking wheel events inside the thumbnail column
+  thumbCols.forEach(col => {
+    col.setAttribute('data-lenis-prevent', 'true');
+    col.addEventListener('wheel', (e) => {
+      e.stopPropagation();
+    }, { passive: true });
+  });
 
   if (!thumbs.length || !mainImg) return;
 
@@ -290,21 +310,44 @@ function initProductGallery() {
     thumb.addEventListener('click', () => {
       thumbs.forEach(t => t.classList.remove('active'));
       thumb.classList.add('active');
+      thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
 
       const newSrc = thumb.getAttribute('data-fullsrc') || thumb.querySelector('img')?.src;
       if (newSrc) {
-        mainImg.style.opacity = '0.3';
+        mainImg.style.opacity = '0.4';
+        mainImg.style.transform = 'scale(0.98)';
         setTimeout(() => {
           mainImg.src = newSrc;
           mainImg.style.opacity = '1';
+          mainImg.style.transform = 'scale(1)';
           
-          // Also update data-img on expand floating button
-          const expandBtn = document.querySelector('.gallery-expand-floating, .trigger-lightbox');
+          // Sync data-img attributes
+          const expandBtn = document.querySelector('.gallery-expand-floating');
           if (expandBtn) expandBtn.setAttribute('data-img', newSrc);
-        }, 200);
+          mainImg.setAttribute('data-img', newSrc);
+        }, 180);
       }
     });
   });
+
+  // Clicking main gallery image directly opens lightbox modal
+  if (mainContainer) {
+    mainContainer.addEventListener('click', (e) => {
+      if (e.target.closest('.gallery-expand-floating')) return;
+      const currentSrc = mainImg.getAttribute('data-img') || mainImg.src;
+      const modal = document.getElementById('lightbox-modal');
+      const modalImg = document.getElementById('lightbox-img');
+      const captionEl = document.querySelector('#lightbox-modal .lightbox-caption');
+      if (modal && modalImg) {
+        modalImg.src = currentSrc;
+        const activeThumb = document.querySelector('.gallery-thumb-card.active');
+        if (captionEl) {
+          captionEl.textContent = activeThumb ? (activeThumb.getAttribute('title') || activeThumb.querySelector('img')?.alt || '') : '';
+        }
+        modal.classList.add('active');
+      }
+    });
+  }
 }
 
 function initLightboxModal() {
@@ -312,27 +355,90 @@ function initLightboxModal() {
   const modalImg = document.getElementById('lightbox-img');
   const triggerBtns = document.querySelectorAll('.trigger-lightbox, .gallery-expand-floating');
   const closeBtn = document.querySelector('#lightbox-modal .modal-close');
+  const prevBtn = document.querySelector('#lightbox-modal .lightbox-prev');
+  const nextBtn = document.querySelector('#lightbox-modal .lightbox-next');
+  const captionEl = document.querySelector('#lightbox-modal .lightbox-caption');
 
   if (!modal || !modalImg) return;
 
+  let currentIdx = 0;
+
+  const getImages = () => {
+    const thumbs = document.querySelectorAll('.gallery-thumb-card');
+    if (!thumbs.length) return [];
+    return Array.from(thumbs).map(t => ({
+      src: t.getAttribute('data-fullsrc') || t.querySelector('img')?.src,
+      title: t.getAttribute('title') || t.querySelector('img')?.alt || ''
+    }));
+  };
+
+  const updateLightbox = (idx) => {
+    const images = getImages();
+    if (!images.length) return;
+    if (idx < 0) idx = images.length - 1;
+    if (idx >= images.length) idx = 0;
+    currentIdx = idx;
+
+    modalImg.style.opacity = '0.3';
+    setTimeout(() => {
+      modalImg.src = images[currentIdx].src;
+      modalImg.style.opacity = '1';
+      if (captionEl) captionEl.textContent = images[currentIdx].title;
+    }, 150);
+
+    // Sync active thumb state & main image
+    const thumbs = document.querySelectorAll('.gallery-thumb-card');
+    thumbs.forEach((t, i) => t.classList.toggle('active', i === currentIdx));
+    const mainImg = document.querySelector('#main-gallery-img');
+    if (mainImg) mainImg.src = images[currentIdx].src;
+  };
+
   triggerBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const src = btn.getAttribute('data-img') || document.querySelector('#main-gallery-img, .product-main-img')?.src || 'aseets/glass-frame-2.jpg';
-      modalImg.src = src;
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const images = getImages();
+      const src = btn.getAttribute('data-img') || btn.getAttribute('data-fullsrc') || (document.querySelector('#main-gallery-img')?.src);
+      
+      const foundIdx = images.findIndex(img => img.src === src);
+      currentIdx = foundIdx !== -1 ? foundIdx : 0;
+
+      modalImg.src = src || (images[0]?.src || '');
+      if (captionEl && images[currentIdx]) {
+        captionEl.textContent = images[currentIdx].title;
+      }
       modal.classList.add('active');
     });
   });
 
   if (closeBtn) {
-    closeBtn.addEventListener('click', () => {
-      modal.classList.remove('active');
+    closeBtn.addEventListener('click', () => modal.classList.remove('active'));
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      updateLightbox(currentIdx - 1);
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      updateLightbox(currentIdx + 1);
     });
   }
 
   modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
+    if (e.target === modal || e.target.classList.contains('lightbox-img-container')) {
       modal.classList.remove('active');
     }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (!modal.classList.contains('active')) return;
+    if (e.key === 'Escape') modal.classList.remove('active');
+    if (e.key === 'ArrowLeft') updateLightbox(currentIdx - 1);
+    if (e.key === 'ArrowRight') updateLightbox(currentIdx + 1);
   });
 }
 
@@ -393,7 +499,8 @@ function initLocationSwitcher() {
   if (!locationTabs.length || !mapIframe) return;
 
   const maps = {
-    zurich: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d86475.29130713783!2d8.4651347!3d47.3774337!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900b9749bea219%3A0x73d9830e208b03d3!2sZurich%2C%20Switzerland!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s",
+    calicut: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125218.42823616656!2d75.73600649726563!3d11.2587531!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba65938563d4747%3A0x32150641ca32ec13!2sKozhikode%2C%20Kerala!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin",
+    zurich: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125218.42823616656!2d75.73600649726563!3d11.2587531!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba65938563d4747%3A0x32150641ca32ec13!2sKozhikode%2C%20Kerala!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin",
     dubai: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14439.117260599587!2d55.2721877!3d25.197197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43348a67e24b%3A0xff45e502e1ceb7e2!2sDubai%20Design%20District!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s",
     newyork: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.217707161047!2d-73.9865749!3d40.7554868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25901a412760d%3A0x28e0e7a1772e293a!2s5th%20Ave%2C%20New%20York%2C%20NY!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s",
     tokyo: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12964.7170881958!2d139.7225102!3d35.6644781!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b820a40d517%3A0xc34a66a1f11c750!2sRoppongi%20Hills!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s"
@@ -422,7 +529,7 @@ function openQuoteModal(customMessage) {
 
 // Official System Brochure download trigger
 function downloadBrochure() {
-  const fileUrl = 'aseets/vitco-v14-section.png';
+  const fileUrl = 'aseets/ashlar-system-windows-section.png';
   const link = document.createElement('a');
   link.href = fileUrl;
   link.download = 'Ashlar-Architectural-Glass-System-Brochure.png';
@@ -504,148 +611,50 @@ function initLifestyleHotspots() {
 }
 
 /* --------------------------------------------------
-   13. Engineering Bento Log Switcher
+   13. Footer Utilities (Back to Top & Newsletter)
    -------------------------------------------------- */
-const SYSTEM_LOGS = {
-  'v2.026': {
-    card1: {
-      tag: 'STRUCTURAL INTEGRITY',
-      val: '12kN/m²',
-      sub: '',
-      icon: 'fa-compass-drafting',
-      desc: 'Designed to withstand extreme vertical and horizontal stress. Our proprietary ion-exchange process strengthens the surface at a molecular level.'
-    },
-    card2: {
-      tag: 'VISUAL CLARITY',
-      val: '99.8%',
-      sub: 'ULTRA-LOW IRON CONTENT',
-      icon: 'fa-eye'
-    },
-    card3: {
-      icon: 'fa-ruler-combined',
-      label: 'MAX SIZE',
-      val: '4x12m'
-    },
-    card4: {
-      icon: 'fa-scale-balanced',
-      label: 'WEIGHT',
-      val: '25kg/m²'
-    }
-  },
-  'v2.028': {
-    card1: {
-      tag: 'SASH PERFORMANCE',
-      val: '130kg',
-      sub: 'MAX SASH WEIGHT',
-      icon: 'fa-weight-hanging',
-      desc: 'Equipped with Up-Down Lock variants for enhanced security and smooth operation. Designed for heavy-duty architectural applications.'
-    },
-    card2: {
-      tag: 'PROFILE PRECISION',
-      val: '14mm',
-      sub: 'SLIM INTERLOCK WIDTH',
-      icon: 'fa-border-all'
-    },
-    card3: {
-      icon: 'fa-arrows-up-down',
-      label: 'MAX DOOR HEIGHT',
-      val: '2133mm'
-    },
-    card4: {
-      icon: 'fa-layer-group',
-      label: 'GLASS THICKNESS',
-      val: '8-12mm'
-    }
-  }
-};
-
-function switchSystemLog(logId) {
-  const data = SYSTEM_LOGS[logId];
-  if (!data) return;
-
-  document.querySelectorAll('.eng-log-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.log === logId);
-  });
-
-  const card1Val = document.getElementById('eng-val-1');
-  const card1Tag = document.getElementById('eng-tag-1');
-  const card1Sub = document.getElementById('eng-sub-1');
-  const card1Icon = document.getElementById('eng-icon-1');
-  const card1Desc = document.getElementById('eng-desc-1');
-
-  const card2Val = document.getElementById('eng-val-2');
-  const card2Tag = document.getElementById('eng-tag-2');
-  const card2Sub = document.getElementById('eng-sub-2');
-  const card2Icon = document.getElementById('eng-icon-2');
-
-  const card3Val = document.getElementById('eng-val-3');
-  const card3Label = document.getElementById('eng-label-3');
-  const card3Icon = document.getElementById('eng-icon-3');
-
-  const card4Val = document.getElementById('eng-val-4');
-  const card4Label = document.getElementById('eng-label-4');
-  const card4Icon = document.getElementById('eng-icon-4');
-
-  const targets = [
-    card1Val, card1Tag, card1Sub, card1Icon, card1Desc,
-    card2Val, card2Tag, card2Sub, card2Icon,
-    card3Val, card3Label, card3Icon,
-    card4Val, card4Label, card4Icon
-  ].filter(Boolean);
-
-  if (typeof gsap !== 'undefined') {
-    gsap.to(targets, {
-      opacity: 0,
-      y: -6,
-      duration: 0.15,
-      onComplete: () => {
-        if (card1Tag) card1Tag.textContent = data.card1.tag;
-        if (card1Val) card1Val.innerHTML = data.card1.val;
-        if (card1Sub) card1Sub.textContent = data.card1.sub;
-        if (card1Icon) card1Icon.className = `fa-solid ${data.card1.icon}`;
-        if (card1Desc) card1Desc.textContent = data.card1.desc;
-
-        if (card2Tag) card2Tag.textContent = data.card2.tag;
-        if (card2Val) card2Val.innerHTML = data.card2.val;
-        if (card2Sub) card2Sub.textContent = data.card2.sub;
-        if (card2Icon) card2Icon.className = `fa-solid ${data.card2.icon}`;
-
-        if (card3Label) card3Label.textContent = data.card3.label;
-        if (card3Val) card3Val.textContent = data.card3.val;
-        if (card3Icon) card3Icon.className = `fa-solid ${data.card3.icon}`;
-
-        if (card4Label) card4Label.textContent = data.card4.label;
-        if (card4Val) card4Val.textContent = data.card4.val;
-        if (card4Icon) card4Icon.className = `fa-solid ${data.card4.icon}`;
-
-        gsap.to(targets, {
-          opacity: 1,
-          y: 0,
-          duration: 0.25,
-          stagger: 0.02
-        });
+function initFooterUtilities() {
+  // Back to top scroll
+  const backToTopBtns = document.querySelectorAll('.footer-back-to-top, .footer-back-to-top-minimal');
+  backToTopBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (typeof lenis !== 'undefined' && lenis) {
+        lenis.scrollTo(0, { duration: 1.2 });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     });
-  } else {
-    if (card1Tag) card1Tag.textContent = data.card1.tag;
-    if (card1Val) card1Val.innerHTML = data.card1.val;
-    if (card1Sub) card1Sub.textContent = data.card1.sub;
-    if (card1Icon) card1Icon.className = `fa-solid ${data.card1.icon}`;
-    if (card1Desc) card1Desc.textContent = data.card1.desc;
+  });
 
-    if (card2Tag) card2Tag.textContent = data.card2.tag;
-    if (card2Val) card2Val.innerHTML = data.card2.val;
-    if (card2Sub) card2Sub.textContent = data.card2.sub;
-    if (card2Icon) card2Icon.className = `fa-solid ${data.card2.icon}`;
-
-    if (card3Label) card3Label.textContent = data.card3.label;
-    if (card3Val) card3Val.textContent = data.card3.val;
-    if (card3Icon) card3Icon.className = `fa-solid ${data.card3.icon}`;
-
-    if (card4Label) card4Label.textContent = data.card4.label;
-    if (card4Val) card4Val.textContent = data.card4.val;
-    if (card4Icon) card4Icon.className = `fa-solid ${data.card4.icon}`;
-  }
+  // Newsletter Subscription Form
+  const newsletterForms = document.querySelectorAll('.footer-newsletter-form');
+  newsletterForms.forEach(form => {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const input = form.querySelector('.footer-newsletter-input');
+      const btn = form.querySelector('.footer-newsletter-btn');
+      
+      if (input && input.value.trim() !== '') {
+        const originalText = btn.innerHTML;
+        btn.innerHTML = `✓ Subscribed`;
+        btn.style.background = '#22c55e';
+        btn.style.color = '#ffffff';
+        input.value = '';
+        
+        setTimeout(() => {
+          btn.innerHTML = originalText;
+          btn.style.background = '';
+          btn.style.color = '';
+        }, 3500);
+      }
+    });
+  });
 }
 
-
+// Recalculate ScrollTrigger positions after all page assets load
+window.addEventListener('load', () => {
+  if (typeof ScrollTrigger !== 'undefined') {
+    ScrollTrigger.refresh();
+  }
+});
