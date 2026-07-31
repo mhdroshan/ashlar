@@ -4977,11 +4977,16 @@ textarea.form-control {
   grid-template-columns: 1.05fr 0.95fr;
   gap: 5rem;
   align-items: center;
+  justify-content: center;
+  max-width: 1140px;
+  margin: 0 auto;
 }
 
 .integration-media-wrapper {
   position: relative;
   width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
 }
 
 .integration-img-box {
@@ -5058,7 +5063,13 @@ textarea.form-control {
 
 /* Right Content Column */
 .integration-content {
-  padding-left: 1.5rem;
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 480px;
+  margin: 0 auto;
 }
 
 .integration-tag {
@@ -5069,6 +5080,7 @@ textarea.form-control {
   color: #94a3b8;
   margin-bottom: 2rem;
   display: block;
+  text-align: center;
 }
 
 .integration-quote {
@@ -5080,6 +5092,9 @@ textarea.form-control {
   color: #1e293b;
   margin-bottom: 1.75rem;
   max-width: 440px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .integration-divider {
@@ -5087,6 +5102,8 @@ textarea.form-control {
   height: 1.5px;
   background: #475569;
   margin-bottom: 1.75rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .integration-narrative {
@@ -5094,6 +5111,9 @@ textarea.form-control {
   line-height: 1.7;
   color: #475569;
   max-width: 440px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media (max-width: 992px) {
