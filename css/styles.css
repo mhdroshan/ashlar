@@ -4900,7 +4900,7 @@ textarea.form-control {
   .hero-split-redesign {
     grid-template-columns: 1fr;
     min-height: auto;
-    margin-top: 70px;
+    margin-top: 0px;
   }
   .hero-split-media {
     min-height: 380px;
