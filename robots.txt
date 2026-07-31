@@ -1,0 +1,9 @@
+# Robots.txt for Ashlar System Windows
+User-agent: *
+Allow: /
+
+# Host
+Host: https://ashlar.com
+
+# Sitemaps
+Sitemap: https://ashlar.com/sitemap.xml

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://ashlar.com/index.html</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://ashlar.com/aseets/logo.png</image:loc>
+      <image:title>Ashlar System Windows Logo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://ashlar.com/aseets/glass-frame-7.png</image:loc>
+      <image:title>Ashlar System Windows Monolithic Glass Facade</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ashlar.com/product-details.html</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://ashlar.com/aseets/glass-frame-6.png</image:loc>
+      <image:title>Ashlar System Windows Technical Specifications and Villa Profile</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ashlar.com/contact.html</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>
