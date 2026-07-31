@@ -529,7 +529,7 @@ function openQuoteModal(customMessage) {
 
 // Official System Brochure download trigger
 function downloadBrochure() {
-  const fileUrl = 'aseets/ashlar-system-windows-section.png';
+  const fileUrl = 'https://ashlar.com/aseets/ashlar-system-windows-section.png';
   const link = document.createElement('a');
   link.href = fileUrl;
   link.download = 'Ashlar-Architectural-Glass-System-Brochure.png';
