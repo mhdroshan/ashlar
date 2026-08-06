@@ -73,7 +73,12 @@
         "@type": "Product",
         "@id": "https://ashlar.com/#product",
         "name": "Ashlar System Windows Minimal Sliding Glass Doors",
-        "image": "https://ashlar.com/aseets/glass-frame-7.png",
+        "image": [
+          "https://ashlar.com/aseets/glass-frame-7.png",
+          "https://ashlar.com/aseets/glass-frame-14.jpeg",
+          "https://ashlar.com/aseets/glass-frame-15.jpeg",
+          "https://ashlar.com/aseets/glass-frame-16.jpeg"
+        ],
         "description": "Ultra-slim 14mm sightline architectural glass system with concealed stainless steel sub-floor tracks.",
         "brand": {
           "@type": "Brand",
@@ -130,6 +135,22 @@
 </head>
 <body>
 
+  <!-- PRELOADER -->
+  <div id="preloader" class="preloader" aria-label="Loading Ashlar System Windows">
+    <div class="preloader-backdrop"></div>
+    <div class="preloader-content">
+      <div class="preloader-logo-card">
+        <div class="preloader-logo-wrapper">
+          <img src="aseets/preloader.png" alt="Ashlar System Windows Logo" class="preloader-logo">
+          <div class="glass-shine-sweep"></div>
+        </div>
+      </div>
+      <div class="preloader-line-track">
+        <div class="preloader-line-fill"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- NAVIGATION HEADER -->
   <header class="header">
     <div class="container container-wide">
@@ -140,7 +161,7 @@
 
         <nav class="nav-menu">
           <a href="index.html" class="nav-link active">Home</a>
-          <a href="product-details.html" class="nav-link">Products</a>
+          <a href="products.html" class="nav-link">Products</a>
           <a href="contact.html" class="nav-link">Contact</a>
         </nav>
 
@@ -172,7 +193,7 @@
         <span class="num">01</span>
         <span class="label">Home</span>
       </a>
-      <a href="product-details.html" class="mobile-nav-item">
+      <a href="products.html" class="mobile-nav-item">
         <span class="num">02</span>
         <span class="label">Products & Systems</span>
       </a>
@@ -223,7 +244,7 @@
       </p>
       
       <div class="hero-split-actions">
-        <a href="product-details.html" class="btn btn-primary" style="padding: 0.95rem 2.25rem;">
+        <a href="products.html" class="btn btn-primary" style="padding: 0.95rem 2.25rem;">
           Explore Systems <i class="fa-solid fa-arrow-right"></i>
         </a>
         <button class="btn btn-secondary" onclick="openQuoteModal('Hello Ashlar, I would like to request an architectural consultation for Ashlar system windows.')" style="padding: 0.95rem 2.25rem;">
@@ -278,7 +299,7 @@
             <p class="integration-card-desc">
               Breaking the barrier between interior sanctuary and the raw exterior world.
             </p>
-            <a href="product-details.html" class="integration-card-link">
+            <a href="products.html" class="integration-card-link">
               EXPLORE TECHNICAL SPECS <i class="fa-solid fa-arrow-right"></i>
             </a>
           </div>
@@ -384,7 +405,7 @@
   </section>
 
 
-  <section class="section-padding" style="background: #f8fafc; border-top: 1px solid rgba(15,23,42,0.06);" id="use-cases">
+  <section class="section-padding" style="background: #f8fafc; border-top: 1px solid rgba(15,23,42,0.06); display: none;" id="use-cases">
     <div class="container">
       <div style="text-align: center; margin-bottom: 3.5rem;" class="reveal-up">
         <span class="section-tag">APPLICATIONS SHOWCASE</span>
@@ -544,7 +565,7 @@
           <img src="aseets/logo.png" alt="Ashlar System Windows Logo" class="footer-logo-img">
         </a>
         <div class="footer-minimal-links">
-          <a href="product-details.html">Product Systems</a>
+          <a href="products.html">Product Systems</a>
           <a href="contact.html">Contact Us</a>
           <a href="#">Privacy Policy</a>
           <a href="#">Terms of Service</a>

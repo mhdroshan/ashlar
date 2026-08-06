@@ -3,6 +3,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initPreloader();
   initLenisScroll();
   initHeaderScroll();
   initMobileMenu();
@@ -18,6 +19,74 @@ document.addEventListener('DOMContentLoaded', () => {
   initLifestyleHotspots();
   initFooterUtilities();
 });
+
+/* --------------------------------------------------
+   0. Preloader Controller
+   -------------------------------------------------- */
+function initPreloader() {
+  let preloader = document.getElementById('preloader');
+
+  if (!preloader) {
+    preloader = document.createElement('div');
+    preloader.id = 'preloader';
+    preloader.className = 'preloader';
+    preloader.setAttribute('aria-label', 'Loading Ashlar System Windows');
+    preloader.innerHTML = `
+      <div class="preloader-backdrop"></div>
+      <div class="preloader-content">
+        <div class="preloader-logo-card">
+          <div class="preloader-logo-wrapper">
+            <img src="aseets/preloader.png" alt="Ashlar System Windows Logo" class="preloader-logo">
+            <div class="glass-shine-sweep"></div>
+          </div>
+        </div>
+        <div class="preloader-line-track">
+          <div class="preloader-line-fill"></div>
+        </div>
+      </div>
+    `;
+    document.body.prepend(preloader);
+  }
+
+  document.body.classList.add('preloader-active');
+  if (typeof lenis !== 'undefined' && lenis) {
+    lenis.stop();
+  }
+
+  const startTime = Date.now();
+  const minDisplayTime = 700; // ms minimum display to appreciate glass shine animation
+
+  const hidePreloader = () => {
+    if (!preloader || preloader.classList.contains('preloader-hidden')) return;
+
+    preloader.classList.add('preloader-hidden');
+    document.body.classList.remove('preloader-active');
+
+    if (typeof lenis !== 'undefined' && lenis) {
+      lenis.start();
+    }
+
+    setTimeout(() => {
+      if (preloader && preloader.parentNode) {
+        preloader.style.display = 'none';
+      }
+    }, 900);
+  };
+
+  const scheduleHide = () => {
+    const elapsedTime = Date.now() - startTime;
+    const remainingTime = Math.max(0, minDisplayTime - elapsedTime);
+    setTimeout(hidePreloader, remainingTime);
+  };
+
+  if (document.readyState === 'complete') {
+    scheduleHide();
+  } else {
+    window.addEventListener('load', scheduleHide);
+    // Safety fallback timeout
+    setTimeout(hidePreloader, 2500);
+  }
+}
 
 /* --------------------------------------------------
    1. Lenis Smooth Scroll Integration

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ashlar System Windows — Architectural Product Series & Collection</title>
+  <meta name="description" content="Explore Ashlar System Windows product collection: ASHLAR A-14 SERIES, ASHLAR A-18 SERIES, and ASHLAR A-40 SERIES minimal sliding and casement systems.">
+  <meta name="keywords" content="Ashlar system windows, ASHLAR A-14 SERIES, ASHLAR A-18 SERIES, ASHLAR A-40 SERIES, minimal sliding glass, 14mm sightline, 18mm sightline">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://ashlar.com/products.html">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Ashlar System Windows">
+  <meta property="og:url" content="https://ashlar.com/products.html">
+  <meta property="og:title" content="Ashlar System Windows — Product Collection">
+  <meta property="og:description" content="Discover ultra-slim architectural glass systems engineered for seamless indoor-outdoor living.">
+  <meta property="og:image" content="https://ashlar.com/aseets/glass-frame-7.png">
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Lenis & GSAP Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="aseets/favicon.png">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- PRELOADER -->
+  <div id="preloader" class="preloader" aria-label="Loading Ashlar System Windows">
+    <div class="preloader-backdrop"></div>
+    <div class="preloader-content">
+      <div class="preloader-logo-card">
+        <div class="preloader-logo-wrapper">
+          <img src="aseets/preloader.png" alt="Ashlar System Windows Logo" class="preloader-logo">
+          <div class="glass-shine-sweep"></div>
+        </div>
+      </div>
+      <div class="preloader-line-track">
+        <div class="preloader-line-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVIGATION HEADER -->
+  <header class="header">
+    <div class="container container-wide">
+      <div class="header-inner">
+        <a href="index.html" class="logo" aria-label="Ashlar System Windows Logo">
+          <img src="aseets/logo.png" alt="Ashlar System Windows Logo" class="logo-img">
+        </a>
+
+        <nav class="nav-menu">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="products.html" class="nav-link active">Products</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+          <button class="btn-header-clean" onclick="openQuoteModal()">Request Quote</button>
+          <button class="mobile-toggle" aria-label="Toggle navigation menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE NAVIGATION DRAWER -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <div class="mobile-drawer-header">
+      <a href="index.html" class="logo" aria-label="Ashlar System Windows Logo">
+        <img src="aseets/logo.png" alt="Ashlar System Windows Logo" class="logo-img">
+      </a>
+      <button class="mobile-drawer-close" aria-label="Close navigation menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-item">
+        <span class="num">01</span>
+        <span class="label">Home</span>
+      </a>
+      <a href="products.html" class="mobile-nav-item active">
+        <span class="num">02</span>
+        <span class="label">Products & Systems</span>
+      </a>
+      <a href="contact.html" class="mobile-nav-item">
+        <span class="num">03</span>
+        <span class="label">Contact Us</span>
+      </a>
+    </div>
+
+    <div class="mobile-drawer-footer">
+      <button class="btn btn-bw-minimal" style="width: 100%; margin-bottom: 1.5rem;" onclick="openQuoteModal()">
+        Request Specification <i class="fa-solid fa-arrow-right"></i>
+      </button>
+
+      <div class="mobile-drawer-contact">
+        <div><i class="fa-solid fa-phone"></i> +91 98956 52725</div>
+        <div><i class="fa-solid fa-envelope"></i> info@ashlar.com</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT AREA -->
+  <main id="main-content">
+
+    <!-- HERO SECTION -->
+    <section class="plp-hero">
+      <div class="container">
+        <span class="plp-hero-badge">SYSTEM PORTFOLIO</span>
+        <h1 class="plp-hero-title">Architectural Glass Series</h1>
+        <p class="plp-hero-subtitle">
+          Precision-engineered minimal window systems featuring ultra-slim interlock profiles, zero-threshold tracks, and high-performance acoustic glass.
+        </p>
+
+        <!-- Filter Bar -->
+        <div class="plp-filter-bar">
+          <button class="plp-filter-btn active" data-filter="all">All Systems</button>
+          <button class="plp-filter-btn" data-filter="ultra-slim">Ultra Slim (14mm)</button>
+          <button class="plp-filter-btn" data-filter="tall">Tall Systems (18mm)</button>
+          <button class="plp-filter-btn" data-filter="casement">Casement & Facade (40mm)</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLP PRODUCT GRID SECTION -->
+    <section class="plp-main-section">
+      <div class="container">
+        <div class="plp-grid-header">
+          <span class="plp-grid-count">Displaying 3 Architectural Series</span>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">
+            <i class="fa-solid fa-layer-group"></i> Minimal Typologies
+          </div>
+        </div>
+
+        <div class="plp-product-grid">
+
+          <!-- PRODUCT CARD 1: ASHLAR A-14 SERIES -->
+          <a href="ashlar-a14-series.html" class="product-card-ref" data-category="ultra-slim">
+            <div class="card-ref-header">
+              <h2 class="card-ref-title">ASHLAR A-14 SERIES</h2>
+              <div class="card-ref-subtitle">THE VIEW SERIES</div>
+            </div>
+
+            <div class="card-ref-img-wrapper">
+              <img src="aseets/glass-frame-7.png" alt="Ashlar A-14 Series minimal sliding glass window system" loading="lazy">
+            </div>
+
+            <div class="card-ref-specs">
+              <div class="card-ref-spec-item sightline-spec">
+                <div class="spec-val-box">
+                  <span class="spec-val">14 mm</span>
+                  <span class="spec-lbl">SIGHTLINE</span>
+                </div>
+              </div>
+
+              <div class="card-ref-spec-item">
+                <div class="spec-diagram-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <rect x="5" y="3" width="14" height="18" rx="1"/>
+                    <line x1="12" y1="3" x2="12" y2="21"/>
+                    <path d="M7 8h3M7 16h3"/>
+                  </svg>
+                </div>
+                <div class="spec-val-box">
+                  <span class="spec-val" style="font-size: 0.9rem;">UP TO</span>
+                  <span class="spec-val">2.4 m</span>
+                  <span class="spec-lbl">HEIGHT</span>
+                </div>
+              </div>
+            </div>
+
+            <p class="card-ref-desc">
+              Ultra Slim Series with 14 mm Sightline, 2.4 m height. Engineered for uninterrupted panoramic views.
+            </p>
+
+            <div class="card-ref-cta">
+              View System Details <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </a>
+
+          <!-- PRODUCT CARD 2: ASHLAR A-18 SERIES -->
+          <a href="ashlar-a18-series.html" class="product-card-ref" data-category="tall">
+            <div class="card-ref-header">
+              <h2 class="card-ref-title">ASHLAR A-18 SERIES</h2>
+              <div class="card-ref-subtitle">THE TALL SERIES</div>
+            </div>
+
+            <div class="card-ref-img-wrapper">
+              <img src="aseets/glass-frame-6.png" alt="Ashlar A-18 Series high floor to ceiling sliding doors" loading="lazy">
+            </div>
+
+            <div class="card-ref-specs">
+              <div class="card-ref-spec-item sightline-spec">
+                <div class="spec-val-box">
+                  <span class="spec-val">18 mm</span>
+                  <span class="spec-lbl">SIGHTLINE</span>
+                </div>
+              </div>
+
+              <div class="card-ref-spec-item">
+                <div class="spec-diagram-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <rect x="4" y="2" width="16" height="20" rx="1"/>
+                    <line x1="8" y1="2" x2="8" y2="22"/>
+                    <line x1="16" y1="2" x2="16" y2="22"/>
+                  </svg>
+                </div>
+                <div class="spec-val-box">
+                  <span class="spec-val" style="font-size: 0.9rem;">UP TO</span>
+                  <span class="spec-val">4.2 m</span>
+                  <span class="spec-lbl">HEIGHT</span>
+                </div>
+              </div>
+            </div>
+
+            <p class="card-ref-desc">
+              4.2 m Height | 18 mm Sightline. Heavy-duty sliding profile designed for tall luxury architectural villa facades.
+            </p>
+
+            <div class="card-ref-cta">
+              View System Details <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </a>
+
+          <!-- PRODUCT CARD 3: ASHLAR A-40 SERIES -->
+          <a href="ashlar-a40-series.html" class="product-card-ref" data-category="casement">
+            <div class="card-ref-header">
+              <h2 class="card-ref-title">ASHLAR A-40 SERIES</h2>
+              <div class="card-ref-subtitle">THE CASEMENT SERIES</div>
+            </div>
+
+            <div class="card-ref-img-wrapper">
+              <img src="aseets/glass-frame-8.png" alt="Ashlar A-40 Series elegant casement and window systems" loading="lazy">
+            </div>
+
+            <div class="card-ref-specs">
+              <div class="card-ref-spec-item sightline-spec">
+                <div class="spec-val-box">
+                  <span class="spec-val">18 mm</span>
+                  <span class="spec-lbl">SIGHTLINE</span>
+                </div>
+              </div>
+
+              <div class="card-ref-spec-item">
+                <div class="spec-diagram-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path d="M12 3v18M5 12h14"/>
+                    <path d="M18 9l3 3-3 3"/>
+                  </svg>
+                </div>
+                <div class="spec-val-box">
+                  <span class="spec-val">360°</span>
+                  <span class="spec-lbl">ROTATION</span>
+                </div>
+              </div>
+            </div>
+
+            <p class="card-ref-desc">
+              Most elegant & thin casement windows with 18 mm sightline and structural 40 mm outer frame thermal break.
+            </p>
+
+            <div class="card-ref-cta">
+              View System Details <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- TECHNICAL SPECIFICATION MATRIX -->
+    <!-- <section class="plp-comparison-section">
+      <div class="container">
+        <div style="text-align: center; max-width: 650px; margin: 0 auto 2.5rem;">
+          <span class="plp-hero-badge">TECHNICAL MATRIX</span>
+          <h2 style="font-family: var(--font-display); font-size: 2.2rem; font-weight: 700;">System Comparison Table</h2>
+          <p style="color: var(--text-secondary);">Direct specification overview across all 3 Ashlar system window series.</p>
+        </div>
+
+        <div class="comparison-table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Specification Metric</th>
+                <th>ASHLAR A-14 SERIES</th>
+                <th>ASHLAR A-18 SERIES</th>
+                <th>ASHLAR A-40 SERIES</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Primary Typology & Series</strong></td>
+                <td>29mm Minimal Sliding Window (2, 3 & 4 Track)</td>
+                <td>40mm High-End Window & Door Minimal System</td>
+                <td>40mm Casement Windows (With Flying Mullion)</td>
+              </tr>
+              <tr>
+                <td><strong>Maximum Window/Door Height</strong></td>
+                <td>Max 2,440 mm (Up to 8 ft)</td>
+                <td>Max 4,250 mm (Up to 14 ft)</td>
+                <td>Medium Opening & Mid. Wind Load Rating</td>
+              </tr>
+              <tr>
+                <td><strong>Interlock & Profile Width</strong></td>
+                <td>Slim Interlock 18mm / 22mm / 28mm</td>
+                <td>Slim Interlock 20mm & 40mm</td>
+                <td>40mm Profile with Square Clip Security</td>
+              </tr>
+              <tr>
+                <td><strong>Sash Dimensions & Weight</strong></td>
+                <td>Sash Height: 65mm | Sash Width: 29mm</td>
+                <td>Height: 4,200mm | Width: 2,500mm (Max 240 kg)</td>
+                <td>Internal & External Opening System</td>
+              </tr>
+              <tr>
+                <td><strong>Glass Thickness Range</strong></td>
+                <td>Single (5-8mm), Laminated (11-15mm), Double (Up to 22mm)</td>
+                <td>Laminated (11.5mm) & DGU Double Glazed (30mm)</td>
+                <td>5mm to 24mm Glazing (Inside Security Glazing)</td>
+              </tr>
+              <tr>
+                <td><strong>Mechanical Joinery & Corners</strong></td>
+                <td>Track Joint 90°, Sash Joint 45°/90° (90° Corner Possible)</td>
+                <td>High-End Extrusions for 14ft Elevations</td>
+                <td>Corner Joint & T-Joint Reinforced Joinery</td>
+              </tr>
+              <tr>
+                <td><strong>Locking Variants</strong></td>
+                <td>Single Point & Multipoint Locking</td>
+                <td>Multipoint Security Locking</td>
+                <td>Single Point to Multipoint Locking</td>
+              </tr>
+              <tr>
+                <td><strong>Special Features & Security</strong></td>
+                <td>Fix Single/Double & Adjustable Rollers</td>
+                <td>Certified Sound, Wind, Air, Impact & Water Tightness</td>
+                <td>Burglar Proof System (Optional Grill Variant)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section> -->
+
+  </main>
+
+  <!-- MINIMAL CLEAN FOOTER -->
+  <footer class="site-footer-minimal-clean">
+    <div class="container">
+      <div class="footer-minimal-top">
+        <a href="index.html" class="footer-minimal-logo" aria-label="Ashlar System Windows Logo">
+          <img src="aseets/logo.png" alt="Ashlar System Windows Logo" class="footer-logo-img">
+        </a>
+        <div class="footer-minimal-links">
+          <a href="products.html">Product Systems</a>
+          <a href="contact.html">Contact Us</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+      <div class="footer-minimal-bottom">
+        <div>© 2026 Ashlar System Windows. All rights reserved.</div>
+        <button type="button" class="footer-back-to-top-minimal" aria-label="Back to Top">
+          <span>Back to Top ↑</span>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING WHATSAPP BUTTON -->
+  <a href="https://wa.me/919895652725?text=Hello%20Ashlar%20Team,%20I%20would%20like%20to%20inquire%20about%20Ashlar%20System%20Windows." class="floating-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Contact Ashlar on WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <!-- JS CONTROLLER -->
+  <script src="js/main.js"></script>
+  <script>
+    // Filter script for PLP page
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterBtns = document.querySelectorAll('.plp-filter-btn');
+      const cards = document.querySelectorAll('.product-card-ref');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          const filter = btn.getAttribute('data-filter');
+          cards.forEach(card => {
+            if (filter === 'all' || card.getAttribute('data-category') === filter) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>
