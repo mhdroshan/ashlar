@@ -5311,10 +5311,8 @@ body.pdp-grid-bg {
 /* Right Showcase Area */
 .perf-showcase-wrapper {
   position: relative;
-  padding-bottom: 3.5rem;
-  padding-left: 3.5rem;
-  padding-right: 0;
-  max-width: 580px;
+  padding: 0;
+  max-width: 100%;
   width: 100%;
   margin-left: auto;
 }
@@ -5332,8 +5330,8 @@ body.pdp-grid-bg {
 .perf-image-box img {
   width: 100%;
   height: 100%;
-  min-height: 380px;
-  max-height: 480px;
+  min-height: 480px;
+  max-height: 580px;
   display: block;
   object-fit: cover;
   transition: transform 0.7s var(--ease-out-expo);
@@ -5509,17 +5507,9 @@ body.pdp-grid-bg {
   .perf-showcase-wrapper {
     padding-left: 0;
     padding-right: 0;
-    padding-bottom: 4rem;
-    max-width: 520px;
+    padding-bottom: 0;
+    max-width: 640px;
     margin: 0 auto;
-  }
-
-  .perf-transparency-box {
-    left: 0;
-    right: auto;
-    width: 290px;
-    min-height: 360px;
-    padding: 2.25rem 1.75rem;
   }
 }
 
@@ -5527,14 +5517,6 @@ body.pdp-grid-bg {
   .perf-metrics-grid {
     grid-template-columns: 1fr;
     column-gap: 0;
-  }
-  
-  .perf-transparency-box {
-    position: relative;
-    left: 0;
-    width: 100%;
-    margin-top: -2rem;
-    min-height: auto;
   }
 }
 
@@ -5683,7 +5665,8 @@ body.pdp-grid-bg {
   font-weight: 500;
 }
 
-.plp-product-grid {
+.plp-product-grid,
+.related-products-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2.25rem;
@@ -5845,6 +5828,29 @@ body.pdp-grid-bg {
 
 .product-card-ref:hover .card-ref-cta i {
   transform: translateX(4px);
+}
+
+/* Current Product State & Badge for PDP Related Products */
+.product-card-ref.current-product {
+  border-color: #0F172A;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.current-product-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: #0F172A;
+  color: #FFFFFF;
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 0.3rem 0.65rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  z-index: 2;
 }
 
 /* Spec Matrix Section on PLP */
@@ -6093,7 +6099,8 @@ body.pdp-grid-bg {
 
 /* Responsive Styles for PLP & PDP */
 @media (max-width: 1024px) {
-  .plp-product-grid {
+  .plp-product-grid,
+  .related-products-grid {
     grid-template-columns: repeat(2, 1fr);
   }
   .pdp-hero-grid {
@@ -6107,7 +6114,8 @@ body.pdp-grid-bg {
 }
 
 @media (max-width: 640px) {
-  .plp-product-grid {
+  .plp-product-grid,
+  .related-products-grid {
     grid-template-columns: 1fr;
   }
   .pdp-quick-specs-bar {
