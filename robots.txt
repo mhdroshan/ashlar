@@ -3,7 +3,8 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://ashlar.com
+Host: https://ashlarwindows.com
 
 # Sitemaps
-Sitemap: https://ashlar.com/sitemap.xml
+Sitemap: https://ashlarwindows.com/sitemap.xml
+

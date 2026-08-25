@@ -220,7 +220,7 @@ function initGSAPAnimations() {
   // Fade Up Reveal Elements
   const revealElements = document.querySelectorAll('.reveal-up');
   revealElements.forEach(el => {
-    gsap.fromTo(el, 
+    gsap.fromTo(el,
       { opacity: 0, y: 30 },
       {
         opacity: 1,
@@ -262,7 +262,7 @@ function initGSAPAnimations() {
     const target = parseFloat(stat.getAttribute('data-count'));
     const decimals = stat.getAttribute('data-decimals') || 0;
     const suffix = stat.getAttribute('data-suffix') || '';
-    
+
     ScrollTrigger.create({
       trigger: stat,
       start: 'top 85%',
@@ -271,7 +271,7 @@ function initGSAPAnimations() {
           val: target,
           duration: 2,
           ease: 'power2.out',
-          onUpdate: function() {
+          onUpdate: function () {
             stat.innerText = this.targets()[0].val.toFixed(decimals) + suffix;
           }
         });
@@ -389,7 +389,7 @@ function initProductGallery() {
           mainImg.src = newSrc;
           mainImg.style.opacity = '1';
           mainImg.style.transform = 'scale(1)';
-          
+
           // Sync data-img attributes
           const expandBtn = document.querySelector('.gallery-expand-floating');
           if (expandBtn) expandBtn.setAttribute('data-img', newSrc);
@@ -467,7 +467,7 @@ function initLightboxModal() {
       e.stopPropagation();
       const images = getImages();
       const src = btn.getAttribute('data-img') || btn.getAttribute('data-fullsrc') || (document.querySelector('#main-gallery-img')?.src);
-      
+
       const foundIdx = images.findIndex(img => img.src === src);
       currentIdx = foundIdx !== -1 ? foundIdx : 0;
 
@@ -598,7 +598,7 @@ function openQuoteModal(customMessage) {
 
 // Official System Brochure download trigger
 function downloadBrochure() {
-  const fileUrl = 'https://ashlar.com/aseets/ashlar-system-windows-section.png';
+  const fileUrl = 'https://ashlarwindows.com/aseets/ashlar-system-windows-section.png';
   const link = document.createElement('a');
   link.href = fileUrl;
   link.download = 'Ashlar-Architectural-Glass-System-Brochure.png';
@@ -638,7 +638,7 @@ function initScrollytelling() {
         entry.target.classList.add('active');
 
         const stepIndex = entry.target.getAttribute('data-step');
-        
+
         layers.forEach(layer => {
           layer.classList.remove('active');
           if (layer.getAttribute('data-layer') === stepIndex) {
@@ -703,14 +703,14 @@ function initFooterUtilities() {
       e.preventDefault();
       const input = form.querySelector('.footer-newsletter-input');
       const btn = form.querySelector('.footer-newsletter-btn');
-      
+
       if (input && input.value.trim() !== '') {
         const originalText = btn.innerHTML;
         btn.innerHTML = `✓ Subscribed`;
         btn.style.background = '#22c55e';
         btn.style.color = '#ffffff';
         input.value = '';
-        
+
         setTimeout(() => {
           btn.innerHTML = originalText;
           btn.style.background = '';
