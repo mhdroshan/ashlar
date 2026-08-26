@@ -590,7 +590,7 @@ function initLocationSwitcher() {
 
 // Global WhatsApp quote trigger utility
 function openQuoteModal(customMessage) {
-  const phone = '919895652725';
+  const phone = '918137038181';
   const defaultMsg = 'Hello Ashlar, I would like to request a quote and architectural specifications for your glass systems.';
   const msg = encodeURIComponent(customMessage || defaultMsg);
   window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
