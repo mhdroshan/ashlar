@@ -2129,7 +2129,9 @@ textarea.form-control {
   flex-direction: column;
   gap: 0.35rem;
 }
-
+.location-contact a{
+  color: var(--accent-bronze);
+}
 /* Map Embed Container */
 .map-box {
   width: 100%;
