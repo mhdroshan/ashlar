@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollytelling();
   initLifestyleHotspots();
   initFooterUtilities();
+  initGalleryFilters();
 });
 
 /* --------------------------------------------------
@@ -117,6 +118,43 @@ function initLenisScroll() {
         requestAnimationFrame(raf);
       }
       requestAnimationFrame(raf);
+    }
+
+    // Anchor Link Smooth Scroll Integration with Lenis
+    document.querySelectorAll('a[href*="#"]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (!href || href === '#' || href.startsWith('#!')) return;
+
+        const hashIndex = href.indexOf('#');
+        if (hashIndex === -1) return;
+
+        const path = href.substring(0, hashIndex);
+        const hash = href.substring(hashIndex);
+        const currentFile = window.location.pathname.split('/').pop() || 'index.html';
+        const isCurrentPage = !path || path === '' || path === currentFile || (currentFile === 'index.html' && (path === '/' || path === './' || path === 'index.html'));
+
+        if (isCurrentPage && hash.length > 1) {
+          const target = document.querySelector(hash);
+          if (target) {
+            e.preventDefault();
+            lenis.scrollTo(target, { offset: -80, duration: 1.2 });
+            if (history.pushState) {
+              history.pushState(null, null, hash);
+            }
+          }
+        }
+      });
+    });
+
+    // Check on page load for hash navigation
+    if (window.location.hash) {
+      setTimeout(() => {
+        const target = document.querySelector(window.location.hash);
+        if (target) {
+          lenis.scrollTo(target, { offset: -80, duration: 1.2 });
+        }
+      }, 750);
     }
   }
 }
@@ -422,7 +460,7 @@ function initProductGallery() {
 function initLightboxModal() {
   const modal = document.getElementById('lightbox-modal');
   const modalImg = document.getElementById('lightbox-img');
-  const triggerBtns = document.querySelectorAll('.trigger-lightbox, .gallery-expand-floating');
+  const triggerBtns = document.querySelectorAll('.trigger-lightbox, .gallery-expand-floating, .gallery-wall-card');
   const closeBtn = document.querySelector('#lightbox-modal .modal-close');
   const prevBtn = document.querySelector('#lightbox-modal .lightbox-prev');
   const nextBtn = document.querySelector('#lightbox-modal .lightbox-next');
@@ -433,6 +471,14 @@ function initLightboxModal() {
   let currentIdx = 0;
 
   const getImages = () => {
+    const wallCards = document.querySelectorAll('.gallery-wall-card');
+    if (wallCards.length) {
+      const visibleCards = Array.from(wallCards).filter(c => c.style.display !== 'none');
+      return visibleCards.map(c => ({
+        src: c.getAttribute('data-fullsrc') || c.querySelector('img')?.src || '',
+        title: ''
+      }));
+    }
     const thumbs = document.querySelectorAll('.gallery-thumb-card');
     if (!thumbs.length) return [];
     return Array.from(thumbs).map(t => ({
@@ -452,7 +498,7 @@ function initLightboxModal() {
     setTimeout(() => {
       modalImg.src = images[currentIdx].src;
       modalImg.style.opacity = '1';
-      if (captionEl) captionEl.textContent = images[currentIdx].title;
+      if (captionEl) captionEl.textContent = images[currentIdx].title || '';
     }, 150);
 
     // Sync active thumb state & main image
@@ -466,14 +512,14 @@ function initLightboxModal() {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
       const images = getImages();
-      const src = btn.getAttribute('data-img') || btn.getAttribute('data-fullsrc') || (document.querySelector('#main-gallery-img')?.src);
+      const src = btn.getAttribute('data-fullsrc') || btn.getAttribute('data-img') || btn.querySelector('img')?.src || (document.querySelector('#main-gallery-img')?.src);
 
       const foundIdx = images.findIndex(img => img.src === src);
       currentIdx = foundIdx !== -1 ? foundIdx : 0;
 
       modalImg.src = src || (images[0]?.src || '');
-      if (captionEl && images[currentIdx]) {
-        captionEl.textContent = images[currentIdx].title;
+      if (captionEl) {
+        captionEl.textContent = (images[currentIdx] && images[currentIdx].title) ? images[currentIdx].title : '';
       }
       modal.classList.add('active');
     });
@@ -508,6 +554,40 @@ function initLightboxModal() {
     if (e.key === 'Escape') modal.classList.remove('active');
     if (e.key === 'ArrowLeft') updateLightbox(currentIdx - 1);
     if (e.key === 'ArrowRight') updateLightbox(currentIdx + 1);
+  });
+}
+
+/* --------------------------------------------------
+   7b. Gallery Filters Controller
+   -------------------------------------------------- */
+function initGalleryFilters() {
+  const filterBtns = document.querySelectorAll('.gallery-filter-pill');
+  const cards = document.querySelectorAll('.gallery-wall-card');
+  const countEl = document.getElementById('gallery-count-num');
+  if (!filterBtns.length || !cards.length) return;
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.getAttribute('data-filter');
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const cat = card.getAttribute('data-category') || '';
+        if (filter === 'all' || cat.split(' ').includes(filter)) {
+          card.style.display = '';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      if (countEl) {
+        countEl.textContent = visibleCount;
+      }
+    });
   });
 }
 
